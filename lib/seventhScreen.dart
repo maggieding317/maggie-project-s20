@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/fifthScreen.dart';
+import 'package:flutter_app/yourFoodScreen.dart';
 import 'fourthScreen.dart';
 
 
@@ -52,7 +53,10 @@ class _MySeventhPageState extends State<MySeventhPage> {
                 margin: EdgeInsets.only(top:20,bottom:100),
                 child:RaisedButton(
                   onPressed: () {
-
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => yourFoodPage(title: 'Your Food Page')),
+                    );
                   },
                   child: const Text(
                       '         Enabled Button         ',

@@ -1,11 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/thirdScreen.dart';
 import 'secondScreen.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sembast/sembast_io.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // File path to a file in the current directory
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
+  MyApp(){
+    _loadDB();
+  }
+
+  void _loadDB() async{
+      var dir = await getApplicationDocumentsDirectory();
+  // make sure it exists
+      await dir.create(recursive: true);
+  // build the database path
+      var dbPath = join(dir.path, 'my_database.db');
+  // open the database
+      var db = await databaseFactoryIo.openDatabase(dbPath);
+  }
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -108,10 +130,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
-          );
+          SharedPreferences.getInstance().then((prefs){
+            var isSaved = prefs.getBool("saved");
+            if(isSaved){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyThirdPage(title: '??? Page')),
+              );
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
+              );
+            }
+          });
+
+
         },
         tooltip: 'Increment',
         child: Icon(Icons.add_box),

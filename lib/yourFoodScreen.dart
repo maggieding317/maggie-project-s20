@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'fifthScreen.dart';
+import 'foodList.dart';
 
-class MyFourthPage extends StatefulWidget {
-  MyFourthPage({Key key, this.title}) : super(key: key);
+class yourFoodPage extends StatefulWidget {
+  yourFoodPage({Key key, this.title}) : super(key: key);
 
 
   final String title;
 
   @override
-  _MyFourthPageState createState() => _MyFourthPageState();
+  _yourFoodPageState createState() => _yourFoodPageState();
 }
 
-class _MyFourthPageState extends State<MyFourthPage> {
+class _yourFoodPageState extends State<yourFoodPage> {
 
   var breakfastList = [
     {
@@ -57,6 +59,28 @@ class _MyFourthPageState extends State<MyFourthPage> {
       "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
     }
   ];
+
+  // A method that launches the SelectionScreen and awaits the
+  // result from Navigator.pop.
+  _navigateAndDisplaySelection(BuildContext context, String meal) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      // Create the SelectionScreen in the next step.
+      MaterialPageRoute(builder: (context) => FoodList(title: "Food List",)),
+    );
+    print(result);
+    setState(() {
+      if (meal == "breakfast"){
+        breakfastList.add(result);
+      }
+      if (meal == "lunch"){
+        breakfastList.add(result);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -80,6 +104,13 @@ class _MyFourthPageState extends State<MyFourthPage> {
                        textAlign: TextAlign.left,
                      ),
                    ),
+                 ),
+
+                 IconButton(
+                   icon:Icon(Icons.add),
+                   onPressed: (){
+                     _navigateAndDisplaySelection(context, "breakfast");
+                   },
                  ),
                ],
              ),
@@ -136,6 +167,13 @@ class _MyFourthPageState extends State<MyFourthPage> {
                      ),
                    ),
                  ),
+
+                 IconButton(
+                   icon:Icon(Icons.add),
+                   onPressed: (){
+                     _navigateAndDisplaySelection(context, "lunch");
+                   },
+                 ),
                ],
              ),
 
@@ -188,6 +226,12 @@ class _MyFourthPageState extends State<MyFourthPage> {
                        textAlign: TextAlign.left,
                      ),
                    ),
+                 ),
+                 IconButton(
+                   icon:Icon(Icons.add),
+                   onPressed: (){
+                     _navigateAndDisplaySelection(context, "dinner");
+                   },
                  ),
                ],
              ),
