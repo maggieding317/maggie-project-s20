@@ -13,21 +13,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  MyApp(){
-    _loadDB();
-  }
 
-  void _loadDB() async{
-      var dir = await getApplicationDocumentsDirectory();
-  // make sure it exists
-      await dir.create(recursive: true);
-  // build the database path
-      var dbPath = join(dir.path, 'my_database.db');
-  // open the database
-      var db = await databaseFactoryIo.openDatabase(dbPath);
-  }
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -132,7 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           SharedPreferences.getInstance().then((prefs){
             var isSaved = prefs.getBool("saved");
-            if(isSaved){
+            print(isSaved);
+            if(isSaved != null && isSaved){
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => MyThirdPage(title: '??? Page')),
