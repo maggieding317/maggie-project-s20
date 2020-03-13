@@ -25,7 +25,24 @@ class _FoodListState extends State<FoodList> {
     {
       "name" : "milk",
       "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
+    },
+    {
+      "name" : "bacon",
+      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/bacon-23-565349.png",
+    },
+    {
+      "name" : "sausage",
+      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-176-1051414.png",
+    },
+    {
+      "name" : "pork",
+      "image" : "https://img.icons8.com/cotton/2x/steak-rare.png",
+    },
+    {
+      "name" : "chicken",
+      "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRfM5V0hpPJGa9GVkIBVJX2m-dDP0qY-EhcJdyZo9weoWkjm-qE",
+    },
+
   ];
 
   var lunchList = [

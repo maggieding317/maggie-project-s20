@@ -76,7 +76,10 @@ class _yourFoodPageState extends State<yourFoodPage> {
         breakfastList.add(result);
       }
       if (meal == "lunch"){
-        breakfastList.add(result);
+        lunchList.add(result);
+      }
+      if (meal == "dinner"){
+        dinnerList.add(result);
       }
     });
   }

@@ -41,7 +41,7 @@ class _MySeventhPageState extends State<MySeventhPage> {
                     );
                   },
                   child: const Text(
-                      '         Enabled Button        ',
+                      '         推荐菜单        ',
                       style: TextStyle(fontSize: 20)
                   ),
                 ),
@@ -59,7 +59,7 @@ class _MySeventhPageState extends State<MySeventhPage> {
                     );
                   },
                   child: const Text(
-                      '         Enabled Button         ',
+                      '         记录菜单         ',
                       style: TextStyle(fontSize: 20)
                   ),
                 ),
