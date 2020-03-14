@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/recommendation.dart';
 import 'fifthScreen.dart';
 
 class MyFourthPage extends StatefulWidget {
@@ -13,50 +14,34 @@ class MyFourthPage extends StatefulWidget {
 
 class _MyFourthPageState extends State<MyFourthPage> {
 
-  var breakfastList = [
-    {
-      "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-      "name" : "egg",
-      "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-      "name" : "milk",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
-  ];
+  var recommendation = Recommendataion();
 
-  var lunchList = [
-    {
-      "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-      "name" : "egg",
-      "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-      "name" : "milk",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
-  ];
+  var breakfastList = [ ];
 
-  var dinnerList = [
-    {
-      "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-      "name" : "egg",
-      "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-      "name" : "milk",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
-  ];
+  var lunchList = [ ];
+
+  var dinnerList = [ ];
+
+  @override
+  void initState() {
+    super.initState();
+    recommendation.get_recommended_food().then((rec_map){
+      setState(() {
+        breakfastList = rec_map['breakfast'];
+        lunchList = rec_map['lunch'];
+        dinnerList = rec_map['dinner'];
+        print("here");
+        print(breakfastList.elementAt(0));
+        print("here1");
+        print(Recommendataion.food_map);
+        print("here2");
+        print(Recommendataion.food_map[breakfastList[0]]);
+      });
+    }).catchError((e) {
+      print("Failed to load the data." + e.toString());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -101,7 +86,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                      height: 80,
                                      width: 80,
                                      child:
-                                     Image.network(breakfastList[index]['image']),
+                                     Image.network(Recommendataion.food_map[breakfastList[index]]['image']),
                                    ),
                                  ),
                                  Expanded(
@@ -109,7 +94,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    child: Container(
                                      margin: EdgeInsets.only(right: 30),
                                      child:Text(
-                                       breakfastList[index]['name'],
+                                       Recommendataion.food_map[breakfastList[index]]['name'],
                                        textAlign: TextAlign.left,
                                      ),
                                    ),
@@ -155,7 +140,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    height: 80,
                                    width: 80,
                                    child:
-                                    Image.network(lunchList[index]['image']),
+                                    Image.network(Recommendataion.food_map[lunchList[index]]['image']),
                                  ),
                                ),
                                Expanded(
@@ -163,7 +148,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
-                                     lunchList[index]['name'],
+                                     Recommendataion.food_map[lunchList[index]]['name'],
                                      textAlign: TextAlign.left,
                                    ),
                                  ),
@@ -208,7 +193,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    height: 80,
                                    width: 80,
                                    child:
-                                   Image.network(dinnerList[index]['image']),
+                                   Image.network(Recommendataion.food_map[dinnerList[index]]['image']),
                                  ),
                                ),
                                Expanded(
@@ -216,7 +201,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
-                                     dinnerList[index]['name'],
+                                     Recommendataion.food_map[dinnerList[index]]['name'],
                                      textAlign: TextAlign.left,
                                    ),
                                  ),

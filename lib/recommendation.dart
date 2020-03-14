@@ -1,7 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Recommendataion {
-  var food_map = {
+
+  static Map<String, dynamic> food_map = {
     "egg" : {
       "id" : "egg",
       "name" : "egg",
@@ -43,36 +44,36 @@ class Recommendataion {
   var recommendation_options = {
     "normal" : {
       "breakfast" : [
-        "bread",
+        "egg",
         "egg",
       ],
       "lunch" : [
-        "rice",
+        "pork",
         "pork",
         "egg",
       ],
       "dinner" : [
-        "banana",
-        "beef",
-        "lettuce",
+        "pork",
+        "pork",
+        "pork",
       ],
     },
 
     "lack_vit_d" : {
       "breakfast" : [
-        "bread",
+        "pork",
         "egg",
         "egg",
       ],
       "lunch" : [
-        "rice",
         "pork",
-        "egg",
+        "pork",
+        "pork",
       ],
       "dinner" : [
-        "banana",
-        "beef",
-        "egg",
+        "pork",
+        "pork",
+        "pork",
       ],
     }
   };
@@ -84,17 +85,30 @@ class Recommendataion {
   var gender;
   var age;
 
-  void _loadProfileInfo() async {
+  Future<void> _loadProfileInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     id = prefs.getString("ID");
-    weight = prefs.getString("weight");
-    height = prefs.getString("height");
-    head = prefs.getString("head");
+    print(id);
+    weight = double.parse(prefs.getString("weight"));
+    print(weight);
+    height = double.parse(prefs.getString("height"));
+    print(height);
+    head = double.parse(prefs.getString("head"));
+    print(head);
     gender = prefs.getString("gender");
-    age = prefs.getString("age");
+    print(gender);
+    age = int.parse(prefs.getString("age"));
+    print(age);
   }
 
-  Map get_recommended_food() {
-    _loadProfileInfo();
+  Future<Map> get_recommended_food() async {
+    await _loadProfileInfo();
+    if (weight < 30 && age > 1) {
+      return Future.value(recommendation_options['lack_vit_d']);
+    } else if (weight > 35 && height < 24 && age > 2) {
+      return Future.value(recommendation_options['normal']);
+    } else {
+      return Future.value(recommendation_options['normal']);
+    }
   }
 }
