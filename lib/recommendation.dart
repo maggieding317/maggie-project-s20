@@ -108,7 +108,7 @@ class Recommendataion {
     } else if (weight > 35 && height < 24 && age > 2) {
       return Future.value(recommendation_options['normal']);
     } else {
-      return Future.value(recommendation_options['normal']);
+      return Future.value(recommendation_options['normal、']);
     }
   }
 }
