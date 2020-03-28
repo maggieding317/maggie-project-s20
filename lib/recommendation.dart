@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Recommendataion {
@@ -5,7 +6,7 @@ class Recommendataion {
   static Map<String, dynamic> food_map = {
     "egg" : {
       "id" : "egg",
-      "name" : "egg",
+      "name" : "Egg",
       "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
     },
     "bread":{
@@ -128,6 +129,15 @@ class Recommendataion {
     },
   };
 
+  static List<Map<String, String>> getFoodList() {
+    var foodList = List<Map<String, String>>();
+    food_map.forEach((k, v) {
+      foodList.add(v);
+    });
+    print(foodList);
+    return foodList;
+  }
+
   var id;
   var weight;
   var height;
@@ -158,7 +168,7 @@ class Recommendataion {
     } else if (weight > 35 && height < 24 && age > 2) {
       return Future.value(recommendation_options['normal']);
     } else {
-      return Future.value(recommendation_options['normal、']);
+      return Future.value(recommendation_options['normal']);
     }
   }
 }

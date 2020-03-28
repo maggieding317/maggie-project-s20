@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/recommendation.dart';
 import 'fifthScreen.dart';
 
 class FoodList extends StatefulWidget {
@@ -12,6 +13,13 @@ class FoodList extends StatefulWidget {
 }
 
 class _FoodListState extends State<FoodList> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    breakfastList = Recommendataion.getFoodList();
+  }
 
   var breakfastList = [
     {

@@ -25,6 +25,8 @@ class _MyFourthPageState extends State<MyFourthPage> {
   void initState() {
     super.initState();
     recommendation.get_recommended_food().then((rec_map){
+      print("returned: ");
+      print(rec_map);
       setState(() {
         breakfastList = rec_map['breakfast'];
         lunchList = rec_map['lunch'];

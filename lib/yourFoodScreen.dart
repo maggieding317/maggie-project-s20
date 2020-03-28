@@ -16,48 +16,15 @@ class yourFoodPage extends StatefulWidget {
 class _yourFoodPageState extends State<yourFoodPage> {
 
   var breakfastList = [
-    {
-      "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-      "name" : "egg",
-      "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-      "name" : "milk",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
+
   ];
 
   var lunchList = [
-    {
-      "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-      "name" : "egg",
-      "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-      "name" : "milk",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
+
   ];
 
   var dinnerList = [
-    {
-      "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-      "name" : "egg",
-      "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-      "name" : "milk",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    }
+
   ];
 
   // A method that launches the SelectionScreen and awaits the
