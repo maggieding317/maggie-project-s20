@@ -30,9 +30,9 @@ class Recommendataion {
       "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-176-1051414.png",
     },
     "pork":{
-      "id":"sausage",
-      "name" : "sausage",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-176-1051414.png",
+      "id":"pork",
+      "name" : "pork",
+      "image" : "https://extension.umd.edu/sites/default/files/_images/programs/agmarketing/Pork.png",
     },
     "chicken":{
       "id":"chicken",
@@ -167,7 +167,12 @@ class Recommendataion {
       return Future.value(recommendation_options['lack_vit_d']);
     } else if (weight > 35 && height < 24 && age > 2) {
       return Future.value(recommendation_options['normal']);
-    } else {
+    }
+      else if (weight > 35 && height < 24 && age < 2) {
+      return Future.value(recommendation_options['overweight']);
+    }  else if (weight < 35 && height < 20 && age > 1) {
+      return Future.value(recommendation_options['short']);
+    }else {
       return Future.value(recommendation_options['normal']);
     }
   }

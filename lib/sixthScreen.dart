@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/secondScreen.dart';
 
 class MySixthPage extends StatefulWidget {
   MySixthPage({Key key, this.title}) : super(key: key);
@@ -120,6 +121,27 @@ class _MySixthPageState extends State<MySixthPage> {
                     child:Text(
                       "",
                       textAlign: TextAlign.left,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    margin: EdgeInsets.only(top:50,bottom: 50),
+                    child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
+                        );
+                      },
+                      child: Text(
+                        "Flat Button",
+                      ),
                     ),
                   ),
                 ),
