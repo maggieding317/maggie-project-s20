@@ -117,7 +117,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                            child: Row(
                                children: <Widget>[
                                  Expanded(
-                                   flex: 1,
+                                   flex: 2,
                                    child: Container(
                                      height: 80,
                                      width: 80,
@@ -126,12 +126,26 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                    ),
                                  ),
                                  Expanded(
-                                   flex: 2,
+                                   flex: 4,
                                    child: Container(
                                      margin: EdgeInsets.only(right: 30),
                                      child:Text(
                                        breakfastList[index]['name'],
                                        textAlign: TextAlign.left,
+                                     ),
+                                   ),
+                                 ),
+                                 Expanded(
+                                   flex: 1,
+                                   child: Container(
+                                     child:IconButton(
+                                       icon:Icon(Icons.delete),
+                                       onPressed: (){
+                                         setState(() {
+                                           breakfastList.removeAt(index);
+                                           Recommendataion.recordFoodToday("breakfast", breakfastList);
+                                         });
+                                       },
                                      ),
                                    ),
                                  ),
@@ -178,7 +192,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                          child: Row(
                              children: <Widget>[
                                Expanded(
-                                 flex: 1,
+                                 flex: 2,
                                  child: Container(
                                    height: 80,
                                    width: 80,
@@ -187,7 +201,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                  ),
                                ),
                                Expanded(
-                                 flex: 2,
+                                 flex: 4,
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
@@ -196,6 +210,21 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                    ),
                                  ),
                                ),
+                               Expanded(
+                                 flex: 1,
+                                 child: Container(
+                                   child:IconButton(
+                                     icon:Icon(Icons.delete),
+                                     onPressed: (){
+                                       setState(() {
+                                         lunchList.removeAt(index);
+                                         Recommendataion.recordFoodToday("lunch", lunchList);
+                                       });
+                                     },
+                                   ),
+                                 ),
+                               ),
+
 
                              ]
                          ),
@@ -237,7 +266,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                          child: Row(
                              children: <Widget>[
                                Expanded(
-                                 flex: 1,
+                                 flex: 2,
                                  child: Container(
                                    height: 80,
                                    width: 80,
@@ -246,7 +275,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                  ),
                                ),
                                Expanded(
-                                 flex: 2,
+                                 flex: 4,
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
@@ -255,6 +284,21 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                    ),
                                  ),
                                ),
+                               Expanded(
+                                 flex: 1,
+                                 child: Container(
+                                   child:IconButton(
+                                     icon:Icon(Icons.delete),
+                                     onPressed: (){
+                                       setState(() {
+                                         dinnerList.removeAt(index);
+                                         Recommendataion.recordFoodToday("dinner", dinnerList);
+                                       });
+                                     },
+                                   ),
+                                 ),
+                               ),
+
 
                              ]
                          ),
