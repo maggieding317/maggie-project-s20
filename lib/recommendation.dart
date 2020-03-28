@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class Recommendataion {
 
@@ -175,5 +176,20 @@ class Recommendataion {
     }else {
       return Future.value(recommendation_options['normal']);
     }
+  }
+
+  static void recordFoodToday(food_type, foodList) {
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString(food_type + "_today", jsonEncode(foodList));
+    });
+  }
+
+  static Future<List<dynamic>> loadFoodToday (food_type) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var foodListStr = prefs.getString(food_type + "_today");
+    if (foodListStr == null) {
+      return Future.value(List<dynamic>());
+    }
+    return Future.value(jsonDecode(foodListStr));
   }
 }

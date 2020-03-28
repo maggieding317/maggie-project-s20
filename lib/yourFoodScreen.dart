@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'fifthScreen.dart';
 import 'foodList.dart';
+import 'recommendation.dart';
 
 class yourFoodPage extends StatefulWidget {
   yourFoodPage({Key key, this.title}) : super(key: key);
@@ -27,8 +28,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
 
   ];
 
-  // A method that launches the SelectionScreen and awaits the
-  // result from Navigator.pop.
+
   _navigateAndDisplaySelection(BuildContext context, String meal) async {
     // Navigator.push returns a Future that completes after calling
     // Navigator.pop on the Selection Screen.
@@ -41,13 +41,33 @@ class _yourFoodPageState extends State<yourFoodPage> {
     setState(() {
       if (meal == "breakfast"){
         breakfastList.add(result);
+        Recommendataion.recordFoodToday("breakfast", breakfastList);
       }
       if (meal == "lunch"){
         lunchList.add(result);
+        Recommendataion.recordFoodToday("lunch", lunchList);
       }
       if (meal == "dinner"){
         dinnerList.add(result);
+        Recommendataion.recordFoodToday("dinner", dinnerList);
       }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Recommendataion.loadFoodToday("breakfast").then((list) {
+      print(list);
+      setState(() {
+        this.breakfastList = list;
+      });
+    });
+    Recommendataion.loadFoodToday("lunch").then((list) {
+      this.lunchList = list;
+    });
+    Recommendataion.loadFoodToday("dinner").then((list) {
+      this.dinnerList = list;
     });
   }
 
