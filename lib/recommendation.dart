@@ -6,12 +6,12 @@ class Recommendataion {
     "egg" : {
       "id" : "egg",
       "name" : "egg",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
     },
     "bread":{
       "id":"bread",
       "name" : "Bread",
-      "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
+      "image" : "https://cdn2.iconfinder.com/data/icons/mini-icon-set-food/91/Food_16-512.png",
     },
     "milk":{
       "id":"milk",
@@ -37,7 +37,23 @@ class Recommendataion {
       "id":"chicken",
       "name" : "chicken",
       "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRfM5V0hpPJGa9GVkIBVJX2m-dDP0qY-EhcJdyZo9weoWkjm-qE",
-    }
+    },
+    "beef":{
+      "id":"beef",
+      "name":"beef",
+      "image":"https://cdn3.iconfinder.com/data/icons/restaurant-2-1/2134/roast_beef_steak_grilled_meat_food-512.png",
+
+    },
+    "shrimp":{
+      "id":"shrimp",
+      "name":"shrimp",
+      "image":"https://image.flaticon.com/icons/png/512/123/123287.png",
+    },
+    "lettuce":{
+      "id":"lettuce",
+      "name":"lettuce",
+      "image":"https://img.icons8.com/cotton/2x/lettuce-1--v2.png",
+    },
 
   };
 
@@ -45,37 +61,71 @@ class Recommendataion {
     "normal" : {
       "breakfast" : [
         "egg",
-        "egg",
+        "milk",
       ],
       "lunch" : [
-        "pork",
-        "pork",
+        "milk",
+        "chicken",
         "egg",
       ],
       "dinner" : [
-        "pork",
-        "pork",
-        "pork",
+        "milk",
+        "sausage",
+        "bacon",
       ],
     },
 
     "lack_vit_d" : {
       "breakfast" : [
-        "pork",
+        "sausage",
         "egg",
-        "egg",
+        "milk",
       ],
       "lunch" : [
         "pork",
-        "pork",
-        "pork",
+        "chicken",
+        "milk",
+      ],
+      "dinner" : [
+        "sausage",
+        "milk",
+        "bacon",
+      ],
+    },
+
+    "overweight" : {
+      "breakfast" : [
+        "milk",
+        "egg",
+      ],
+      "lunch" : [
+        "milk",
+        "sausage",
       ],
       "dinner" : [
         "pork",
-        "pork",
+        "egg",
+        "milk",
+      ],
+    },
+
+    "short" : {
+      "breakfast" : [
+        "milk",
+        "egg",
         "pork",
       ],
-    }
+      "lunch" : [
+        "milk",
+        "sausage",
+        "pork"
+      ],
+      "dinner" : [
+        "pork",
+        "chicken",
+        "milk",
+      ],
+    },
   };
 
   var id;
