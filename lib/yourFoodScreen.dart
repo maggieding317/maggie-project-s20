@@ -32,6 +32,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
   _navigateAndDisplaySelection(BuildContext context, String meal) async {
     // Navigator.push returns a Future that completes after calling
     // Navigator.pop on the Selection Screen.
+
     final result = await Navigator.push(
       context,
       // Create the SelectionScreen in the next step.
