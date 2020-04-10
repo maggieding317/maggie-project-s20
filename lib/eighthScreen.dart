@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/recommendation_activity.dart';
 
 class MyEighthPage extends StatefulWidget {
   MyEighthPage({Key key, this.title}) : super(key: key);
@@ -9,40 +10,22 @@ class MyEighthPage extends StatefulWidget {
 }
 
 class _MyEighthPageState extends State<MyEighthPage> {
+  var recommendation = RecommendataionActivity();
   void initState() {
     super.initState();
-    //activityList = Recommendataion.getFoodList();
+    recommendation.get_recommended_activities().then((rec_map){
+      setState(() {
+        activityList = rec_map;
+        print(activityList);
+      });
+    }).catchError((e) {
+      print("Failed to load the data." + e.toString());
+    });
   }
 
   var activityList = [
-  {
-      "name" : "Bread",
-    "image" : "https://lh3.googleusercontent.com/proxy/wtqY1ThjGPtYU6fzx_pJ0rPyGF-svFNEyhegBA0f3mrjeFst_yxW8Idct3Ocpk29HeqT5rLdmcNR_GaIPWL1j1yt2_kfLgM8v4uz_7bMAm9i7DKg4YANdNwTzEcecSrc86m88kL1bOyD48GR-_2uYFJlnVZ6Qm4",
-    },
-    {
-    "name" : "egg",
-    "image" : "https://cdn.iconscout.com/icon/free/png-256/egg-21-108383.png",
-    },
-    {
-    "name" : "milk",
-    "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    },
-    {
-    "name" : "bacon",
-    "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/bacon-23-565349.png",
-    },
-    {
-    "name" : "sausage",
-    "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/sausage-176-1051414.png",
-    },
-    {
-    "name" : "pork",
-    "image" : "https://img.icons8.com/cotton/2x/steak-rare.png",
-    },
-    {
-    "name" : "chicken",
-    "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRfM5V0hpPJGa9GVkIBVJX2m-dDP0qY-EhcJdyZo9weoWkjm-qE",
-    },
+
+
 ];
 
 
@@ -95,7 +78,7 @@ class _MyEighthPageState extends State<MyEighthPage> {
                                     height: 80,
                                     width: 80,
                                     child:
-                                    Image.network(activityList[index]['image']),
+                                    Image.network(RecommendataionActivity.acitivity_map[activityList[index]]['image']),
                                   ),
                                 ),
                                 Expanded(
@@ -103,7 +86,7 @@ class _MyEighthPageState extends State<MyEighthPage> {
                                   child: Container(
                                     margin: EdgeInsets.only(right: 30),
                                     child:Text(
-                                      activityList[index]['name'],
+                                      RecommendataionActivity.acitivity_map[activityList[index]]['name'],
                                       textAlign: TextAlign.left,
                                     ),
                                   ),

@@ -23,6 +23,24 @@ class RecommendataionActivity {
       "description" : "Fun sports 3",
       "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
     },
+    "sleep":{
+      "id":"sleep",
+      "name":"Sleep",
+      "descrition":"Activity 4",
+      "image":"https://www.nicepng.com/png/detail/185-1858087_sleeping-icon-pencil-and-sleeping-in-bed-icon.png",
+    },
+    "music":{
+      "id":"music",
+      "name":"music",
+      "description":"activity 5",
+      "image":"https://cdn4.iconfinder.com/data/icons/jumpicon-entertainment-glyph-1/32/-_Listen-Music-Headphone-Listening-Audio-Headset-512.png",
+    },
+    "story":{
+      "id":"story",
+      "name":"story",
+      "description":"activity 6",
+      "image":"https://cdn1.iconfinder.com/data/icons/children-autism-spectrum-disorder-asd/299/autism-child-children-008-512.png",
+    },
   };
 
   var recommendation_options = {
@@ -77,14 +95,14 @@ class RecommendataionActivity {
   Future<List> get_recommended_activities() async {
     await _loadProfileInfo();
     if (weight < 30 && age > 1) {
-      return Future.value(recommendation_options['lack_vit_d']);
+      return Future.value(recommendation_options['normal']);
     } else if (weight > 35 && height < 24 && age > 2) {
       return Future.value(recommendation_options['normal']);
     }
       else if (weight > 35 && height < 24 && age < 2) {
-      return Future.value(recommendation_options['overweight']);
+      return Future.value(recommendation_options['normal']);
     }  else if (weight < 35 && height < 20 && age > 1) {
-      return Future.value(recommendation_options['short']);
+      return Future.value(recommendation_options['normal']);
     }else {
       return Future.value(recommendation_options['normal']);
     }
