@@ -36,10 +36,10 @@ class _MyThirdPageState extends State<MyThirdPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
+//      appBar: AppBar(
+//
+//        title: Text(widget.title),
+//      ),
       body: Center(
 
         child: _widgetOptions.elementAt(_selectedIndex),

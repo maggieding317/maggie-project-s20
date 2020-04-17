@@ -26,13 +26,14 @@ class _MySixthPageState extends State<MySixthPage> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    height: 80,
-                    width: 80,
+
                     margin: EdgeInsets.only(right: 10),
                     alignment: Alignment.centerRight,
                     child:
-                    Image(
-                      image: AssetImage("assets/medium.jpg"),
+                    CircleAvatar(
+                      backgroundImage: NetworkImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"),
+                      radius: 40,
+                      backgroundColor: Colors.white,
                     ),
                   ),
                 ),

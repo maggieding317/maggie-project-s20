@@ -5,6 +5,7 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
 
 void main() {
   // File path to a file in the current directory
@@ -56,18 +57,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  var loading = true;
+  double _progressValue=0.0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+  void _updateProgress() {
+    const oneSec = const Duration(seconds: 1);
+    new Timer.periodic(oneSec, (Timer t) {
+      setState(() {
+        _progressValue += 0.2;
+        // we "finish" downloading here
+        if (_progressValue.toStringAsFixed(1) == '1.0') {
+          t.cancel();
+          loading=false;
+          return;
+          
+        }
+      });
     });
   }
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    _updateProgress();
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +125,25 @@ class _MyHomePageState extends State<MyHomePage> {
               'xxxxxx:',
               style: Theme.of(context).textTheme.display1,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            Expanded(
+              flex:2,
+              child:
+                Visibility(
+                  visible: loading,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "loading"
+                      ),
+                      Container(
+                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*.1,right: MediaQuery.of(context).size.width*.1),
+                          child: LinearProgressIndicator(value: _progressValue,)
+                      ),
+                      Text('${(_progressValue * 100).round()}%'),
+                    ],
+                  ),
+                ),
             ),
           ],
         ),

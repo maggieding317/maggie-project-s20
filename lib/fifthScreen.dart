@@ -41,10 +41,10 @@ class _MyFifthPageState extends State<MyFifthPage> {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    margin: EdgeInsets.only(left:50, top: 30,bottom: 30),
+                    margin: EdgeInsets.only(top: 30,bottom: 30),
                     child:Text(
-                      "Recommended Activity",
-                      textAlign: TextAlign.left,
+                      "日程表",
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -64,7 +64,7 @@ class _MyFifthPageState extends State<MyFifthPage> {
                         print("clicked!");
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ActivityDetailPage(activityid: activityList[index])),
+                          MaterialPageRoute(builder: (context) => ActivityDetailPage(activityid: activityList[index]['name'])),
                         );
                       },
                       title:Container(
