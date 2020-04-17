@@ -225,8 +225,6 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                    ),
                                  ),
                                ),
-
-
                              ]
                          ),
                        ),
@@ -299,8 +297,6 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                    ),
                                  ),
                                ),
-
-
                              ]
                          ),
                        ),
@@ -308,9 +304,6 @@ class _yourFoodPageState extends State<yourFoodPage> {
                    }
                ),
              ),
-
-
-
            ],
         ),
       ),

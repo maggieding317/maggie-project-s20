@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/recommendation.dart';
 import 'package:flutter_app/secondScreen.dart';
 
 class MySixthPage extends StatefulWidget {
@@ -11,6 +12,24 @@ class MySixthPage extends StatefulWidget {
 
 class _MySixthPageState extends State<MySixthPage> {
 
+  var rating = 'N/A';
+
+  _MySixthPageState() {
+    Recommendataion.getRating().then((res) {
+      print("rating " + res);
+      setState(() {
+        rating = res;
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    var  b = context;
+
+  }
 
   @override
   Widget build(BuildContext context) {
