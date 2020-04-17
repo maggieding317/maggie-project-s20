@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/activityDetail.dart';
 import 'package:flutter_app/recommendation_activity.dart';
 
 class MyEighthPage extends StatefulWidget {
@@ -46,7 +47,7 @@ class _MyEighthPageState extends State<MyEighthPage> {
                   child: Container(
                     margin: EdgeInsets.only(left:50, top: 30,bottom: 30),
                     child:Text(
-                      "Food List",
+                      "Recommended Activity",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -65,7 +66,10 @@ class _MyEighthPageState extends State<MyEighthPage> {
                     return ListTile(
                       onTap: (){
                         print("clicked!");
-                        Navigator.pop(context,activityList[index]);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ActivityDetailPage(activityid: activityList[index])),
+                        );
                       },
                       title:Container(
                         height: 50,

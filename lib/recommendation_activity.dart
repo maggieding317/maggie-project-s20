@@ -11,6 +11,36 @@ class RecommendataionActivity {
       "description" : "Fun sports",
       "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
     },
+    "nap" : {
+      "id" : "nap",
+      "name" : "Nap",
+      "description" : "Fun sports",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+    },
+    "sleep" : {
+      "id" : "sleep",
+      "name" : "Sleep",
+      "description" : "Fun sports",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+    },
+    "breakfast" : {
+      "id" : "breakfast",
+      "name" : "Breakfast",
+      "description" : "Fun sports",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+    },
+    "lunch" : {
+      "id" : "lunch",
+      "name" : "Lunch",
+      "description" : "Fun sports",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+    },
+    "dinner" : {
+      "id" : "dinner",
+      "name" : "Dinner",
+      "description" : "Fun sports",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+    },
     "basketball":{
       "id":"basketball",
       "name" : "Basketball",

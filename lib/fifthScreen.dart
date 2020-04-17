@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'recommendation_schedule.dart';
+import 'recommendation_activity.dart';
+import 'activityDetail.dart';
 
 class MyFifthPage extends StatefulWidget {
   MyFifthPage({Key key, this.title}) : super(key: key);
@@ -11,7 +14,19 @@ class MyFifthPage extends StatefulWidget {
 }
 
 class _MyFifthPageState extends State<MyFifthPage> {
-
+  var recommendation = RecommendataionSchedule();
+  var activityList =[];
+  void initState() {
+    super.initState();
+    recommendation.get_recommended_schedul().then((rec_map){
+      setState(() {
+        activityList = rec_map;
+        print(activityList);
+      });
+    }).catchError((e) {
+      print("Failed to load the data." + e.toString());
+    });
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -24,228 +39,82 @@ class _MyFifthPageState extends State<MyFifthPage> {
             Row(
               children: <Widget>[
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Container(
-                    margin: EdgeInsets.only(left:30, top: 50,bottom: 30),
+                    margin: EdgeInsets.only(left:50, top: 30,bottom: 30),
                     child:Text(
-                      "8:00am",
+                      "Recommended Activity",
                       textAlign: TextAlign.left,
                     ),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
+
+
               ],
             ),
 
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "10:00am",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
+
+            Expanded(
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: activityList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      onTap: (){
+                        print("clicked!");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ActivityDetailPage(activityid: activityList[index])),
+                        );
                       },
-                      child: Text(
-                        "Flat Button",
+                      title:Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 30),
+                                    child:Text(
+                                      activityList[index]['time'],
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(
+                                    height: 80,
+                                    width: 80,
+                                    child:
+                                    Image.network(RecommendataionActivity.acitivity_map[activityList[index]['name']]['image']),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 2,
+                                  child: Container(
+                                    margin: EdgeInsets.only(right: 30),
+                                    child:Text(
+                                      RecommendataionActivity.acitivity_map[activityList[index]['name']]['name'],
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ),
+
+                              ]
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "12:00am",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "1:00pm",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "3:00pm",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                    );
+                  }
+              ),
             ),
 
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "5:00pm",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "6:00pm",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:30, top: 30,bottom: 30),
-                    child:Text(
-                      "8:00pm",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    child: FlatButton(
-                      onPressed: () {
-                        /*...*/
-                      },
-                      child: Text(
-                        "Flat Button",
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            
           ],
         ),
       ),
-
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

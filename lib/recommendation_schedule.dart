@@ -15,7 +15,7 @@ class RecommendataionSchedule {
     schedule_list.add({
       "time" : "8:00am",
       "type" : "food",
-      "name" : "Breakfast"
+      "name" : "breakfast"
     });
     schedule_list.add({
       "time" : "9:00am",
@@ -30,7 +30,7 @@ class RecommendataionSchedule {
     schedule_list.add({
       "time" : "12:00am",
       "type" : "food",
-      "name" : "Lunch"
+      "name" : "lunch"
     });
     schedule_list.add({
       "time" : "12:30pm",

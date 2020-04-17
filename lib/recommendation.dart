@@ -4,6 +4,7 @@ import 'dart:convert';
 
 class Recommendataion {
 
+  // food_map['foodid']['name']  food_map['foodid']['image']
   static Map<String, dynamic> food_map = {
     "egg" : {
       "id" : "egg",
