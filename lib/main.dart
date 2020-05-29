@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         _progressValue += 0.2;
         // we "finish" downloading here
-        if (_progressValue.toStringAsFixed(1) == '1.0') {
+        if (_progressValue.toStringAsFixed(1) == '3.0') {
           t.cancel();
           loading=false;
           return;
@@ -157,10 +157,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       Expanded(
                       flex: 8,
                       child: Tab(
-                          icon: Image.asset("assets/icon2.png"),
+                          icon: Image.asset("assets/logo2.jpg"),
 //                          iconMargin: EdgeInsets.only(
 //                              left: width, right: width, top: height),
-                          text: "???")),
+                          text: "陪陪养育")),
                   Expanded(flex: 1, child: Text('loading...')),
                   Expanded(
                     flex: 1,

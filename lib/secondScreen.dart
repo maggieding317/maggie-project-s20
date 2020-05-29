@@ -21,7 +21,7 @@ class _MyNextPageState extends State<MyNextPage> {
   var weightTextFieldController = new TextEditingController();
   var heightTextFieldController = new TextEditingController();
   var headTextFieldController = new TextEditingController();
-  var genderTextFieldController = new TextEditingController();
+  var _gender = "";
   var ageTextFieldController = new TextEditingController();
 
 
@@ -198,20 +198,35 @@ class _MyNextPageState extends State<MyNextPage> {
                       ),
 
                     ),
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        margin: EdgeInsets.only(right: 30,left: 30,top:15,bottom: 15),
-                        child: TextField(
-                          controller: genderTextFieldController,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: '性别',
-                          ),
-                        ),
-                      ),
-                    ),
+//                    Expanded(
+//                      flex: 6,
+//                      child: Row(
+//                        children: <Widget>[
+//                        RadioListTile(
+//                          groupValue: _gender,
+//                          title: Text('女'),
+//                          value: '女',
+//                          onChanged: (val) {
+//                            setState(() {
+//                              _gender = val;
+//                            });
+//                          },
+//                        ),
+//
+//                        RadioListTile(
+//                          groupValue: _gender,
+//                          title: Text('男'),
+//                          value: '男',
+//                          onChanged: (val) {
+//                            setState(() {
+//                              _gender = val;
+//                            });
+//                          },
+//
+//                        ),
+//                      ],
+//                      ),
+//                    ),
 
                   ],
                 ),
@@ -257,7 +272,7 @@ class _MyNextPageState extends State<MyNextPage> {
                   print(weightTextFieldController.text.toString());
                   print(heightTextFieldController.text.toString());
                   print(headTextFieldController.text.toString());
-                  print(genderTextFieldController.text.toString());
+                  print(_gender);
                   print(ageTextFieldController.text.toString());
 
 
@@ -502,7 +517,7 @@ class _MyNextPageState extends State<MyNextPage> {
     String head = await prefs.get("head");
     headTextFieldController.text = head;
     String gender = await prefs.get("gender");
-    genderTextFieldController.text = gender;
+    _gender = gender;
     String age = await prefs.get("age");
     ageTextFieldController.text = age;
   }
@@ -512,7 +527,7 @@ class _MyNextPageState extends State<MyNextPage> {
     await prefs.setString("weight", weightTextFieldController.text.toString());
     await prefs.setString("height", heightTextFieldController.text.toString());
     await prefs.setString("head", headTextFieldController.text.toString());
-    await prefs.setString("gender", genderTextFieldController.text.toString());
+    await prefs.setString("gender", _gender);
     await prefs.setString("age", ageTextFieldController.text.toString());
     await prefs.setBool("saved", true);
   }
