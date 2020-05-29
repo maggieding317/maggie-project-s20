@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/thirdScreen.dart';
 import 'secondScreen.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
+//import 'package:path/path.dart';
+//import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           t.cancel();
           loading=false;
           return;
-          
+
         }
       });
     });
@@ -82,13 +82,34 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     _updateProgress();
-
+    Timer(
+        Duration(seconds: 4),
+            () {
+              SharedPreferences.getInstance().then((prefs){
+                var isSaved = prefs.getBool("saved");
+                print(isSaved);
+                if(isSaved != null && isSaved){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyThirdPage(title: '??? Page')),
+                  );
+                }else{
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
+                  );
+                }
+              });
+          // add 152-166 here
+        });
   }
 
 
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width * .1;
+    double height = MediaQuery.of(context).size.height*.1;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -133,14 +154,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(
-                        "loading"
-                      ),
-                      Container(
-                          padding: EdgeInsets.only(left: MediaQuery.of(context).size.width*.1,right: MediaQuery.of(context).size.width*.1),
-                          child: LinearProgressIndicator(value: _progressValue,)
-                      ),
-                      Text('${(_progressValue * 100).round()}%'),
+                      Expanded(
+                      flex: 8,
+                      child: Tab(
+                          icon: Image.asset("assets/icon2.png"),
+//                          iconMargin: EdgeInsets.only(
+//                              left: width, right: width, top: height),
+                          text: "???")),
+                  Expanded(flex: 1, child: Text('loading...')),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        margin: EdgeInsets.only(bottom: height / 2),
+                        padding: EdgeInsets.only(left: width, right: width),
+                        child: LinearProgressIndicator(
+                          value: _progressValue,
+
+                        )),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.topCenter,
+                      child: Text('${(_progressValue * 100).round()}%')
+                      ))
                     ],
                   ),
                 ),
