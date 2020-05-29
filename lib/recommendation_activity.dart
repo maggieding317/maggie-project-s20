@@ -1,98 +1,49 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+
+
+
+class Recomendation {
+  var recommendation_options={};
+  Map<String, dynamic> activity_map = {};
+
+  Recomendation({this.recommendation_options, this.activity_map});
+
+  factory Recomendation.fromJson(Map<String, dynamic> parsedJson) {
+    return Recomendation(
+        activity_map: parsedJson['activity'],
+        recommendation_options: parsedJson['option'],
+    );
+  }
+}
+
 
 class RecommendataionActivity {
 
-  static Map<String, dynamic> acitivity_map = {
-    "soccer" : {
-      "id" : "soccer",
-      "name" : "Soccer",
-      "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
-    },
-    "nap" : {
-      "id" : "nap",
-      "name" : "Nap",
-      "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
-    },
-    "sleep" : {
-      "id" : "sleep",
-      "name" : "Sleep",
-      "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
-    },
-    "breakfast" : {
-      "id" : "breakfast",
-      "name" : "Breakfast",
-      "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
-    },
-    "lunch" : {
-      "id" : "lunch",
-      "name" : "Lunch",
-      "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
-    },
-    "dinner" : {
-      "id" : "dinner",
-      "name" : "Dinner",
-      "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
-    },
-    "basketball":{
-      "id":"basketball",
-      "name" : "Basketball",
-      "description" : "Fun sports 2",
-      "image" : "https://cdn2.iconfinder.com/data/icons/mini-icon-set-food/91/Food_16-512.png",
-    },
-    "painting":{
-      "id":"painting",
-      "name" : "Painting",
-      "description" : "Fun sports 3",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
-    },
-    "sleep":{
-      "id":"sleep",
-      "name":"Sleep",
-      "descrition":"Activity 4",
-      "image":"https://www.nicepng.com/png/detail/185-1858087_sleeping-icon-pencil-and-sleeping-in-bed-icon.png",
-    },
-    "music":{
-      "id":"music",
-      "name":"music",
-      "description":"activity 5",
-      "image":"https://cdn4.iconfinder.com/data/icons/jumpicon-entertainment-glyph-1/32/-_Listen-Music-Headphone-Listening-Audio-Headset-512.png",
-    },
-    "story":{
-      "id":"story",
-      "name":"story",
-      "description":"activity 6",
-      "image":"https://cdn1.iconfinder.com/data/icons/children-autism-spectrum-disorder-asd/299/autism-child-children-008-512.png",
-    },
-  };
 
-  var recommendation_options = {
-    "normal" : [
-      "soccer",
-      "painting"
-    ],
 
-    "lack_vit_d" : [
-      "basketball",
-      "painting"
-    ],
+  Future<String> _loadRecomendationAsset() async {
+  return await rootBundle.loadString('assets/recomendation_activity.json');
+  }
 
-    "overweight" : [
-      "basketball",
-      "soccer",
-    ],
-  };
+  Future<Recomendation> loadRecomendation() async {
+  await wait(2);
+  String jsonString = await _loadRecomendationAsset();
+  final jsonResponse = json.decode(jsonString);
+  return new Recomendation.fromJson(jsonResponse);
+  }
+
+  Future wait(int seconds) {
+  return new Future.delayed(Duration(seconds: seconds), () => {});
+  }
+
 
   static List<Map<String, String>> getItemList() {
     var itemList = List<Map<String, String>>();
-    acitivity_map.forEach((k, v) {
+    activity_map.forEach((k, v) {
       itemList.add(v);
     });
     print(itemList);
