@@ -6,8 +6,10 @@ import 'dart:convert';
 
 class RecommendataionSchedule {
 
+
   Recommendataion foodRec = Recommendataion();
-  RecommendataionActivity activityRec = RecommendataionActivity();
+  RecommendationActivity activityRec;
+  RecommendataionSchedule(this.activityRec){}
 
   Future<List<dynamic>> get_recommended_schedul() async {
     var rec_activity = await activityRec.get_recommended_activities();
@@ -51,7 +53,9 @@ class RecommendataionSchedule {
   }
 
   void demo() {
-    RecommendataionSchedule recSchedule = RecommendataionSchedule();
+    RecommendationActivity recommendationActivity= RecommendationActivity();
+    recommendationActivity.init();
+    RecommendataionSchedule recSchedule = RecommendataionSchedule(recommendationActivity);
     recSchedule.get_recommended_schedul().then((schedule) {
       print("recommended schedule is: " + schedule.toString());
     });

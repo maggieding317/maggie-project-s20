@@ -6,6 +6,7 @@ import 'secondScreen.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
+import 'package:flutter_app/recommendation_activity.dart';
 
 void main() {
   // File path to a file in the current directory
@@ -14,10 +15,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: "陪陪养育",
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.orangeAccent[800],
         accentColor: Colors.deepOrangeAccent[600],
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: "陪陪养育"),
     );
   }
 }
@@ -58,58 +58,73 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var loading = true;
-  double _progressValue=0.0;
+  double _progressValue = 0.0;
+  RecommendationActivity recommendataionActivity=RecommendationActivity();
 
   void _updateProgress() {
     const oneSec = const Duration(seconds: 1);
     new Timer.periodic(oneSec, (Timer t) {
       setState(() {
-        _progressValue += 0.2;
+        _progressValue += .1;
         // we "finish" downloading here
-        if (_progressValue.toStringAsFixed(1) == '3.0') {
+        if (_progressValue.toStringAsFixed(1) == '1.0') {
           t.cancel();
-          loading=false;
+          SharedPreferences.getInstance().then((prefs) {
+            var isSaved = prefs.getBool("saved");
+            print(isSaved);
+            if (isSaved != null && isSaved) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MyThirdPage(title: '??? Page',recommendationActivity: recommendataionActivity,)),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity: recommendataionActivity,)),
+              );
+            }
+          });
+          loading = false;
           return;
-
         }
       });
     });
   }
 
-
   @override
   void initState() {
     super.initState();
+    recommendataionActivity.init();
 
     _updateProgress();
-    Timer(
-        Duration(seconds: 4),
-            () {
-              SharedPreferences.getInstance().then((prefs){
-                var isSaved = prefs.getBool("saved");
-                print(isSaved);
-                if(isSaved != null && isSaved){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyThirdPage(title: '??? Page')),
-                  );
-                }else{
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
-                  );
-                }
-              });
-          // add 152-166 here
-        });
+//    Timer(Duration(seconds: 4), () {
+//      SharedPreferences.getInstance().then((prefs) {
+//        var isSaved = prefs.getBool("saved");
+//        print(isSaved);
+//        if (isSaved != null && isSaved) {
+//          Navigator.push(
+//            context,
+//            MaterialPageRoute(
+//                builder: (context) => MyThirdPage(title: '??? Page')),
+//          );
+//        } else {
+//          Navigator.push(
+//            context,
+//            MaterialPageRoute(
+//                builder: (context) => MyNextPage(title: 'Second Page')),
+//          );
+//        }
+//      });
+      // add 152-166 here
+//    });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width * .1;
-    double height = MediaQuery.of(context).size.height*.1;
+    double height = MediaQuery.of(context).size.height * .1;
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -142,68 +157,80 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'xxxxxx:',
-              style: Theme.of(context).textTheme.display1,
-            ),
             Expanded(
-              flex:2,
-              child:
-                Visibility(
-                  visible: loading,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(
                       flex: 8,
-                      child: Tab(
-                          icon: Image.asset("assets/logo2.jpg"),
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 6,
+                            child: Tab(
+                              icon: Image.asset("assets/logo2.jpg"),
 //                          iconMargin: EdgeInsets.only(
 //                              left: width, right: width, top: height),
-                          text: "陪陪养育")),
-                  Expanded(flex: 1, child: Text('loading...')),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                        margin: EdgeInsets.only(bottom: height / 2),
-                        padding: EdgeInsets.only(left: width, right: width),
-                        child: LinearProgressIndicator(
-                          value: _progressValue,
-
-                        )),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 4,
+                            child: Text(
+                              "陪陪养育",
+                              style: Theme.of(context).textTheme.display1,
+                            ),
+                          ),
+                        ],
+                      )),
+                  Visibility(
+                      visible: loading,
+                      child: Expanded(flex: 1, child: Text('loading...'))),
+                  Visibility(
+                    visible: loading,
+                    child: Expanded(
+                      flex: 1,
+                      child: Container(
+                          margin: EdgeInsets.only(bottom: height / 2),
+                          padding: EdgeInsets.only(left: width, right: width),
+                          child: LinearProgressIndicator(
+                            value: _progressValue,
+                          )),
+                    ),
                   ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.topCenter,
-                      child: Text('${(_progressValue * 100).round()}%')
-                      ))
-                    ],
-                  ),
-                ),
+                  Visibility(
+                    visible: loading,
+                    child: Expanded(
+                        flex: 1,
+                        child: Container(
+                            alignment: Alignment.topCenter,
+                            child: Text('${(_progressValue * 100).round()}%'))),
+                  )
+                ],
+              ),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          SharedPreferences.getInstance().then((prefs){
+          SharedPreferences.getInstance().then((prefs) {
             var isSaved = prefs.getBool("saved");
             print(isSaved);
-            if(isSaved != null && isSaved){
+            if (isSaved != null && isSaved) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyThirdPage(title: '??? Page')),
+                MaterialPageRoute(
+                    builder: (context) => MyThirdPage(title: '??? Page')),
               );
-            }else{
+            } else {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
+                MaterialPageRoute(
+                    builder: (context) => MyNextPage(title: 'Second Page')),
               );
             }
           });
-
-
         },
         tooltip: 'Increment',
         child: Icon(Icons.add_box),

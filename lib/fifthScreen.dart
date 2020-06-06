@@ -4,8 +4,9 @@ import 'recommendation_activity.dart';
 import 'activityDetail.dart';
 
 class MyFifthPage extends StatefulWidget {
-  MyFifthPage({Key key, this.title}) : super(key: key);
+  MyFifthPage({Key key, this.title,this.recommendationActivity}) : super(key: key);
 
+  RecommendationActivity recommendationActivity;
 
   final String title;
 
@@ -14,10 +15,11 @@ class MyFifthPage extends StatefulWidget {
 }
 
 class _MyFifthPageState extends State<MyFifthPage> {
-  var recommendation = RecommendataionSchedule();
+  var recommendation;
   var activityList =[];
   void initState() {
     super.initState();
+    recommendation = RecommendataionSchedule(widget.recommendationActivity);
     recommendation.get_recommended_schedul().then((rec_map){
       setState(() {
         activityList = rec_map;
@@ -88,7 +90,7 @@ class _MyFifthPageState extends State<MyFifthPage> {
                                     height: 80,
                                     width: 80,
                                     child:
-                                    Image.network(RecommendataionActivity.acitivity_map[activityList[index]['name']]['image']),
+                                    Image.network(RecommendationActivity.activity_map[activityList[index]['name']]['image']),
                                   ),
                                 ),
                                 Expanded(
@@ -96,7 +98,7 @@ class _MyFifthPageState extends State<MyFifthPage> {
                                   child: Container(
                                     margin: EdgeInsets.only(right: 30),
                                     child:Text(
-                                      RecommendataionActivity.acitivity_map[activityList[index]['name']]['name'],
+                                      RecommendationActivity.activity_map[activityList[index]['name']]['name'],
                                       textAlign: TextAlign.left,
                                     ),
                                   ),

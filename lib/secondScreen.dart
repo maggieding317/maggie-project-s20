@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'thirdScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_app/recommendation_activity.dart';
 
 class MyNextPage extends StatefulWidget {
-  MyNextPage({Key key, this.title}) : super(key: key);
+  MyNextPage({Key key, this.title,this.recommendationActivity}) : super(key: key);
 
   final String title;
+  RecommendationActivity recommendationActivity;
 
   @override
   _MyNextPageState createState() => _MyNextPageState();
@@ -15,13 +17,14 @@ class _MyNextPageState extends State<MyNextPage> {
 
   _MyNextPageState(){
     loadProfileInfo();
+    print(_gender);
   }
 
   var idTextFieldController = new TextEditingController();
   var weightTextFieldController = new TextEditingController();
   var heightTextFieldController = new TextEditingController();
   var headTextFieldController = new TextEditingController();
-  var _gender = "";
+  var _gender="";
   var ageTextFieldController = new TextEditingController();
 
 
@@ -184,11 +187,10 @@ class _MyNextPageState extends State<MyNextPage> {
 
               Expanded(
                 flex: 2,
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Expanded(
-                      flex: 1,
                       child: Container(
                         margin: EdgeInsets.only(right: 30),
                         child:Text(
@@ -198,35 +200,38 @@ class _MyNextPageState extends State<MyNextPage> {
                       ),
 
                     ),
-//                    Expanded(
-//                      flex: 6,
-//                      child: Row(
-//                        children: <Widget>[
-//                        RadioListTile(
-//                          groupValue: _gender,
-//                          title: Text('女'),
-//                          value: '女',
-//                          onChanged: (val) {
-//                            setState(() {
-//                              _gender = val;
-//                            });
-//                          },
-//                        ),
-//
-//                        RadioListTile(
-//                          groupValue: _gender,
-//                          title: Text('男'),
-//                          value: '男',
-//                          onChanged: (val) {
-//                            setState(() {
-//                              _gender = val;
-//                            });
-//                          },
-//
-//                        ),
-//                      ],
-//                      ),
-//                    ),
+                    Expanded(
+                      child: Row(
+                        children: <Widget>[
+                        Expanded(
+                          child: RadioListTile(
+                            groupValue: _gender,
+                            title: Text('女'),
+                            value: 'female',
+                            onChanged: (val) {
+                              setState(() {
+                                _gender = val;
+                              });
+                            },
+                          ),
+                        ),
+
+                        Expanded(
+                          child: RadioListTile(
+                            groupValue: _gender,
+                            title: Text('男'),
+                            value: 'male',
+                            onChanged: (val) {
+                              setState(() {
+                                _gender = val;
+                              });
+                            },
+
+                          ),
+                        ),
+                      ],
+                      ),
+                    ),
 
                   ],
                 ),
@@ -274,12 +279,9 @@ class _MyNextPageState extends State<MyNextPage> {
                   print(headTextFieldController.text.toString());
                   print(_gender);
                   print(ageTextFieldController.text.toString());
-
-
-
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyThirdPage(title: 'Third Page')),
+                    MaterialPageRoute(builder: (context) => MyThirdPage(title: 'Third Page',recommendationActivity: widget.recommendationActivity,)),
                   );
                 },
                 child:
@@ -517,7 +519,9 @@ class _MyNextPageState extends State<MyNextPage> {
     String head = await prefs.get("head");
     headTextFieldController.text = head;
     String gender = await prefs.get("gender");
-    _gender = gender;
+    setState(() {
+      _gender = gender;
+    });
     String age = await prefs.get("age");
     ageTextFieldController.text = age;
   }

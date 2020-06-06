@@ -4,42 +4,46 @@ import 'dart:convert';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-
-
-class Recomendation {
-  var recommendation_options={};
+class Recommendation {
+  var recommendation_options = {};
   Map<String, dynamic> activity_map = {};
 
-  Recomendation({this.recommendation_options, this.activity_map});
+  Recommendation({this.recommendation_options, this.activity_map});
 
-  factory Recomendation.fromJson(Map<String, dynamic> parsedJson) {
-    return Recomendation(
-        activity_map: parsedJson['activity'],
-        recommendation_options: parsedJson['option'],
+  factory Recommendation.fromJson(Map<String, dynamic> parsedJson) {
+    return Recommendation(
+      activity_map: parsedJson['activity'],
+      recommendation_options: parsedJson['option'],
     );
   }
 }
 
+class RecommendationActivity {
+  static var activity_map;
+  var recommendation_options;
 
-class RecommendataionActivity {
-
-
+  init() {
+    loadRecomendation().then((recommendation) {
+      activity_map = recommendation.activity_map;
+      recommendation_options = recommendation.recommendation_options;
+    });
+  }
 
   Future<String> _loadRecomendationAsset() async {
-  return await rootBundle.loadString('assets/recomendation_activity.json');
+    return await rootBundle.loadString('assets/recommendation_activity.json');
   }
 
-  Future<Recomendation> loadRecomendation() async {
-  await wait(2);
-  String jsonString = await _loadRecomendationAsset();
-  final jsonResponse = json.decode(jsonString);
-  return new Recomendation.fromJson(jsonResponse);
+  Future<Recommendation> loadRecomendation() async {
+//    await wait(2);
+
+    String jsonString = await _loadRecomendationAsset();
+    final jsonResponse = json.decode(jsonString);
+    return new Recommendation.fromJson(jsonResponse);
   }
 
-  Future wait(int seconds) {
-  return new Future.delayed(Duration(seconds: seconds), () => {});
-  }
-
+//  Future wait(int seconds) {
+//    return new Future.delayed(Duration(seconds: seconds), () => {});
+//  }
 
   static List<Map<String, String>> getItemList() {
     var itemList = List<Map<String, String>>();
@@ -74,18 +78,20 @@ class RecommendataionActivity {
   }
 
   Future<List> get_recommended_activities() async {
+    print('reco');
     await _loadProfileInfo();
+    print(gender);
     if (weight < 30 && age > 1) {
-      return Future.value(recommendation_options['normal']);
+      return Future.value(recommendation_options[gender]['normal']);
     } else if (weight > 35 && height < 24 && age > 2) {
-      return Future.value(recommendation_options['normal']);
-    }
-      else if (weight > 35 && height < 24 && age < 2) {
-      return Future.value(recommendation_options['normal']);
-    }  else if (weight < 35 && height < 20 && age > 1) {
-      return Future.value(recommendation_options['normal']);
-    }else {
-      return Future.value(recommendation_options['normal']);
+      return Future.value(recommendation_options[gender]['normal']);
+    } else if (weight > 35 && height < 24 && age < 2) {
+      return Future.value(recommendation_options[gender]['normal']);
+    } else if (weight < 35 && height < 20 && age > 1) {
+      return Future.value(recommendation_options[gender]['normal']);
+    } else {
+      print(recommendation_options[gender]['normal']);
+      return Future.value(recommendation_options[gender]['normal']);
     }
   }
 
@@ -95,7 +101,7 @@ class RecommendataionActivity {
     });
   }
 
-  static Future<List<dynamic>> loadFoodToday (food_type) async {
+  static Future<List<dynamic>> loadFoodToday(food_type) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var foodListStr = prefs.getString(food_type + "_today");
     if (foodListStr == null) {

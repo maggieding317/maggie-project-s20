@@ -10,7 +10,7 @@ class ActivityDetailPage extends StatefulWidget {
 }
 
 class _ActivityDetailPageState extends State<ActivityDetailPage> {
-  var recommendation = RecommendataionActivity();
+  var recommendation = RecommendationActivity();
 
 @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                   alignment: Alignment.centerRight,
                   child:
 
-                    Image.network(RecommendataionActivity.acitivity_map[widget.activityid]['image']),
+                    Image.network(RecommendationActivity.activity_map[widget.activityid]['image']),
                 ),
               ),
               Expanded(
@@ -40,7 +40,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 child: Container(
                   margin: EdgeInsets.only(left:10, right: 30,top: 100,bottom: 100),
                   child:Text(
-                    RecommendataionActivity.acitivity_map[widget.activityid]['name'],
+                    RecommendationActivity.activity_map[widget.activityid]['name'],
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -57,7 +57,7 @@ class _ActivityDetailPageState extends State<ActivityDetailPage> {
                 child: Container(
 
                   child:Text(
-                    RecommendataionActivity.acitivity_map[widget.activityid]['description'],
+                    RecommendationActivity.activity_map[widget.activityid]['description'],
                     textAlign: TextAlign.center,
                   ),
                 ),

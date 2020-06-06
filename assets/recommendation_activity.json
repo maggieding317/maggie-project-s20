@@ -41,67 +41,67 @@
       "id" : "soccer",
       "name" : "Soccer",
       "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png"
     },
     "nap" : {
       "id" : "nap",
       "name" : "Nap",
       "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png"
     },
     "sleep" : {
       "id" : "sleep",
       "name" : "Sleep",
       "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png"
     },
     "breakfast" : {
       "id" : "breakfast",
       "name" : "Breakfast",
       "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png"
     },
     "lunch" : {
       "id" : "lunch",
       "name" : "Lunch",
       "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png"
     },
     "dinner" : {
       "id" : "dinner",
       "name" : "Dinner",
       "description" : "Fun sports",
-      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png",
+      "image" : "https://icons-for-free.com/iconfiles/png/512/egg+egg+yolk+eggs+hard+boiled+egg+yolk+icon-1320168013373808361.png"
     },
     "basketball":{
       "id":"basketball",
       "name" : "Basketball",
       "description" : "Fun sports 2",
-      "image" : "https://cdn2.iconfinder.com/data/icons/mini-icon-set-food/91/Food_16-512.png",
+      "image" : "https://cdn2.iconfinder.com/data/icons/mini-icon-set-food/91/Food_16-512.png"
     },
     "painting":{
       "id":"painting",
       "name" : "Painting",
       "description" : "Fun sports 3",
-      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png",
+      "image" : "https://cdn.iconscout.com/icon/premium/png-256-thumb/milk-1637594-1387047.png"
     },
     "sleep":{
       "id":"sleep",
       "name":"Sleep",
       "descrition":"Activity 4",
-      "image":"https://www.nicepng.com/png/detail/185-1858087_sleeping-icon-pencil-and-sleeping-in-bed-icon.png",
+      "image":"https://www.nicepng.com/png/detail/185-1858087_sleeping-icon-pencil-and-sleeping-in-bed-icon.png"
     },
     "music":{
       "id":"music",
       "name":"music",
       "description":"activity 5",
-      "image":"https://cdn4.iconfinder.com/data/icons/jumpicon-entertainment-glyph-1/32/-_Listen-Music-Headphone-Listening-Audio-Headset-512.png",
+      "image":"https://cdn4.iconfinder.com/data/icons/jumpicon-entertainment-glyph-1/32/-_Listen-Music-Headphone-Listening-Audio-Headset-512.png"
     },
     "story":{
       "id":"story",
       "name":"story",
       "description":"activity 6",
-      "image":"https://cdn1.iconfinder.com/data/icons/children-autism-spectrum-disorder-asd/299/autism-child-children-008-512.png",
+      "image":"https://cdn1.iconfinder.com/data/icons/children-autism-spectrum-disorder-asd/299/autism-child-children-008-512.png"
     }
   }
 }

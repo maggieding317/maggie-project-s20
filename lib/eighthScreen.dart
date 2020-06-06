@@ -3,20 +3,20 @@ import 'package:flutter_app/activityDetail.dart';
 import 'package:flutter_app/recommendation_activity.dart';
 
 class MyEighthPage extends StatefulWidget {
-  MyEighthPage({Key key, this.title}) : super(key: key);
+  MyEighthPage({Key key, this.title, this.recommendation}) : super(key: key);
   final String title;
-
+  RecommendationActivity recommendation;
   @override
   _MyEighthPageState createState() => _MyEighthPageState();
 }
 
 class _MyEighthPageState extends State<MyEighthPage> {
-  var recommendation = RecommendataionActivity();
   void initState() {
     super.initState();
-    recommendation.get_recommended_activities().then((rec_map){
+    widget.recommendation.get_recommended_activities().then((rec_map) {
       setState(() {
         activityList = rec_map;
+        print('acti');
         print(activityList);
       });
     }).catchError((e) {
@@ -24,20 +24,12 @@ class _MyEighthPageState extends State<MyEighthPage> {
     });
   }
 
-  var activityList = [
+  var activityList = [];
 
-
-];
-
-
-
-@override
+  @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
       body: Center(
-
         child: Column(
           children: <Widget>[
             Row(
@@ -45,66 +37,62 @@ class _MyEighthPageState extends State<MyEighthPage> {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    margin: EdgeInsets.only(left:50, top: 30,bottom: 30),
-                    child:Text(
+                    margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                    child: Text(
                       "Recommended Activity",
                       textAlign: TextAlign.left,
                     ),
                   ),
                 ),
-
-
               ],
             ),
-
-
             Expanded(
               child: ListView.builder(
                   padding: const EdgeInsets.all(8),
                   itemCount: activityList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                      onTap: (){
+                      onTap: () {
                         print("clicked!");
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ActivityDetailPage(activityid: activityList[index])),
+                          MaterialPageRoute(
+                              builder: (context) => ActivityDetailPage(
+                                  activityid: activityList[index])),
                         );
                       },
-                      title:Container(
+                      title: Container(
                         height: 50,
                         child: Center(
-                          child: Row(
-                              children: <Widget>[
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 80,
-                                    width: 80,
-                                    child:
-                                    Image.network(RecommendataionActivity.acitivity_map[activityList[index]]['image']),
-                                  ),
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(RecommendationActivity
+                                        .activity_map[activityList[index]]
+                                    ['image']),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  RecommendationActivity
+                                          .activity_map[activityList[index]]
+                                      ['name'],
+                                  textAlign: TextAlign.left,
                                 ),
-                                Expanded(
-                                  flex: 2,
-                                  child: Container(
-                                    margin: EdgeInsets.only(right: 30),
-                                    child:Text(
-                                      RecommendataionActivity.acitivity_map[activityList[index]]['name'],
-                                      textAlign: TextAlign.left,
-                                    ),
-                                  ),
-                                ),
-
-                              ]
-                          ),
+                              ),
+                            ),
+                          ]),
                         ),
                       ),
                     );
-                  }
-              ),
+                  }),
             ),
-
           ],
         ),
       ),

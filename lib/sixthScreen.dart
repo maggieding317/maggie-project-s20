@@ -3,8 +3,9 @@ import 'package:flutter_app/recommendation.dart';
 import 'package:flutter_app/secondScreen.dart';
 
 class MySixthPage extends StatefulWidget {
-  MySixthPage({Key key, this.title}) : super(key: key);
+  MySixthPage({Key key, this.title,this.recommendationAct}) : super(key: key);
   final String title;
+  var recommendationAct;
 
   @override
   _MySixthPageState createState() => _MySixthPageState();
@@ -156,7 +157,7 @@ class _MySixthPageState extends State<MySixthPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page')),
+                          MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct ,)),
                         );
                       },
                       child: Text(

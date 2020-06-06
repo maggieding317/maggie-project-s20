@@ -4,13 +4,16 @@ import 'package:flutter_app/fifthScreen.dart';
 import 'package:flutter_app/seventhScreen.dart';
 import 'package:flutter_app/sixthScreen.dart';
 import 'fourthScreen.dart';
+import 'package:flutter_app/recommendation_activity.dart';
 
 
 class MyThirdPage extends StatefulWidget {
-  MyThirdPage({Key key, this.title}) : super(key: key);
+  MyThirdPage({Key key, this.title,this.recommendationActivity}) : super(key: key);
 
 
   final String title;
+  RecommendationActivity recommendationActivity;
+
 
   @override
   _MyThirdPageState createState() => _MyThirdPageState();
@@ -19,13 +22,19 @@ class MyThirdPage extends StatefulWidget {
 class _MyThirdPageState extends State<MyThirdPage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static  List<Widget> _widgetOptions = <Widget>[
-    MySeventhPage(title: "7th page",),
-    MyEighthPage(title: "8th page",),
-    MyFifthPage(title: "5th page",),
-    MySixthPage(title: "6th page",),
-  ];
+  static  List<Widget> _widgetOptions ;
 
+
+  @override
+  void initState() {
+    super.initState();
+    _widgetOptions= <Widget>[
+    MySeventhPage(title: "7th page",),
+    MyEighthPage(title: "8th page",recommendation: widget.recommendationActivity,),
+    MyFifthPage(title: "5th page",recommendationActivity: widget.recommendationActivity,),
+    MySixthPage(title: "6th page",recommendationAct: widget.recommendationActivity,),
+    ];
+  }
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
