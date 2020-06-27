@@ -4,10 +4,10 @@ import 'package:flutter_app/secondScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MySixthPage extends StatefulWidget {
-  MySixthPage({Key key, this.title,this.recommendationAct}) : super(key: key);
+  MySixthPage({Key key, this.title,this.recommendationAct, this.recommendationFood}) : super(key: key);
   final String title;
   var recommendationAct;
-
+  var recommendationFood;
   @override
   _MySixthPageState createState() => _MySixthPageState();
 }
@@ -15,6 +15,7 @@ class MySixthPage extends StatefulWidget {
 class _MySixthPageState extends State<MySixthPage> {
 
   var rating = 'N/A';
+  var healthRating = 'N/A';
 
   _MySixthPageState() {
     Recommendation.getRating().then((res) {
@@ -65,6 +66,24 @@ class _MySixthPageState extends State<MySixthPage> {
     setState(() {
       _id = ID;
     });
+    getHealthRating();
+  }
+
+  getHealthRating() {
+    if (_gender == 'female'){
+      if ( int.parse(_head) <= 2 && int.parse(_height) <= 20 && int.parse(_age) <= 2 && int.parse(_weight) <=30 ){
+              healthRating = "normal";
+        } else {
+          healthRating = "bad";
+        }
+    }else{
+      if (_head <= 2 && _height <= 20 && _age <= 2 &&_weight <=30 ){
+        healthRating = "normal";
+      } else {
+        healthRating = "bad";
+      }
+    }
+
   }
 
   @override
@@ -107,16 +126,26 @@ class _MySixthPageState extends State<MySixthPage> {
 
             Row(
               children: <Widget>[
+//                Expanded(
+//                  flex: 1,
+//                  child: Container(
+//                    height: 80,
+//                    width: 80,
+//                    margin: EdgeInsets.only(right: 20),
+//                    alignment: Alignment.centerRight,
+//                    child:
+//                    Image(
+//                      image: AssetImage("assets/medium.jpg"),
+//                    ),
+//                  ),
+//                ),
                 Expanded(
                   flex: 1,
                   child: Container(
-                    height: 80,
-                    width: 80,
-                    margin: EdgeInsets.only(right: 20),
-                    alignment: Alignment.centerRight,
-                    child:
-                    Image(
-                      image: AssetImage("assets/medium.jpg"),
+                    margin: EdgeInsets.only(left:10,right: 30),
+                    child:Text(
+                      "health rating：$healthRating",
+                      textAlign: TextAlign.left,
                     ),
                   ),
                 ),
@@ -192,7 +221,7 @@ class _MySixthPageState extends State<MySixthPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct ,)),
+                          MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct,foodRecommendation: widget.recommendationFood,)),
                         );
                       },
                       child: Text(

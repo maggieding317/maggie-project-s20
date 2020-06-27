@@ -34,7 +34,7 @@ class _MyThirdPageState extends State<MyThirdPage> {
     MySeventhPage(title: "7th page",foodRecommendation: widget.foodRecommendation,),
     MyEighthPage(title: "8th page",recommendation: widget.recommendationActivity,),
     MyFifthPage(title: "5th page",recommendationActivity: widget.recommendationActivity,),
-    MySixthPage(title: "6th page",recommendationAct: widget.recommendationActivity,),
+    MySixthPage(title: "6th page",recommendationAct: widget.recommendationActivity,recommendationFood: widget.foodRecommendation,),
     ];
   }
   void _onItemTapped(int index) {
