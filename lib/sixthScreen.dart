@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/recommendation.dart';
 import 'package:flutter_app/secondScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MySixthPage extends StatefulWidget {
   MySixthPage({Key key, this.title,this.recommendationAct}) : super(key: key);
@@ -29,7 +30,41 @@ class _MySixthPageState extends State<MySixthPage> {
     // TODO: implement initState
     super.initState();
     var  b = context;
+    loadProfileInfo();
+  }
+  var _weight;
+  var _head;
+  var _height;
+  var _gender;
+  var _age;
+  var _id;
 
+  loadProfileInfo() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String weight = await prefs.get("weight");
+    setState(() {
+      _weight = weight;
+    });
+    String height = await prefs.get("height");
+    setState(() {
+      _height = height;
+    });
+    String head = await prefs.get("head");
+    setState(() {
+      _head = head;
+    });
+    String gender = await prefs.get("gender");
+    setState(() {
+      _gender = gender;
+    });
+    String age = await prefs.get("age");
+    setState(() {
+      _age = age;
+    });
+    String ID = await prefs.get("ID");
+    setState(() {
+      _id = ID;
+    });
   }
 
   @override
@@ -62,7 +97,7 @@ class _MySixthPageState extends State<MySixthPage> {
                   child: Container(
                     margin: EdgeInsets.only(left:10, right: 30,top: 100,bottom: 100),
                     child:Text(
-                      "Name",
+                      "$_id",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -90,7 +125,7 @@ class _MySixthPageState extends State<MySixthPage> {
                   child: Container(
                     margin: EdgeInsets.only(left:10,right: 30),
                     child:Text(
-                      "Name",
+                      "体重：$_weight",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -105,7 +140,7 @@ class _MySixthPageState extends State<MySixthPage> {
                   child: Container(
                     margin: EdgeInsets.only(top:50,right: 50),
                     child:Text(
-                      "Name",
+                      "身高：$_height",
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -115,7 +150,7 @@ class _MySixthPageState extends State<MySixthPage> {
                   child: Container(
                     margin: EdgeInsets.only(left:50,top:50),
                     child:Text(
-                      "Name",
+                      "头围：$_head",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -130,7 +165,7 @@ class _MySixthPageState extends State<MySixthPage> {
                   child: Container(
                     margin: EdgeInsets.only(top:50,right: 50),
                     child:Text(
-                      "Name",
+                      "性别：$_gender",
                       textAlign: TextAlign.right,
                     ),
                   ),
@@ -140,7 +175,7 @@ class _MySixthPageState extends State<MySixthPage> {
                   child: Container(
                     margin: EdgeInsets.only(left:50,top:50,right: 30),
                     child:Text(
-                      "",
+                      "年龄：$_age",
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -161,7 +196,7 @@ class _MySixthPageState extends State<MySixthPage> {
                         );
                       },
                       child: Text(
-                        "Flat Button",
+                        "ADD",
                       ),
                     ),
                   ),

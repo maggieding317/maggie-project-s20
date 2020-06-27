@@ -135,6 +135,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
+        
+        //backgroundColor: Color.fromRGBO( , g, b, opacity),
         title: Text(widget.title),
       ),
       body: Center(
@@ -212,29 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          SharedPreferences.getInstance().then((prefs) {
-            var isSaved = prefs.getBool("saved");
-            print(isSaved);
-            if (isSaved != null && isSaved) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MyThirdPage(title: '??? Page')),
-              );
-            } else {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => MyNextPage(title: 'Second Page')),
-              );
-            }
-          });
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add_box),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
