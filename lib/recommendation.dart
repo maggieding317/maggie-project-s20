@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class Recommendation {
 
   // food_map['foodid']['name']  food_map['foodid']['image']
-  static Map<String, dynamic> food_map = {};
+  Map<String, dynamic> food_map = {};
 
   var recommendation_options = {};
 
@@ -21,8 +21,8 @@ class Recommendation {
     });
   }
 
-  static List<Map<String, String>> getFoodList() {
-    var foodList = List<Map<String, String>>();
+  List<Map<String, dynamic>> getFoodList() {
+    List<Map<String, dynamic>> foodList=[];
     food_map.forEach((k, v) {
       foodList.add(v);
     });
@@ -84,7 +84,7 @@ class Recommendation {
     return Future.value(jsonDecode(foodListStr));
   }
 
-  static Future<String> getRating() async {
+  Future<String> getRating() async {
     var score = 0;
     List<dynamic> breakfast = await loadFoodToday('breakfast');
     for(var f in breakfast) {

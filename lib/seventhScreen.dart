@@ -56,7 +56,7 @@ class _MySeventhPageState extends State<MySeventhPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => yourFoodPage(title: 'Your Food Page')),
+                      MaterialPageRoute(builder: (context) => yourFoodPage(title: 'Your Food Page',foodRecommendation: widget.foodRecommendation,)),
                     );
                   },
                   child: const Text(

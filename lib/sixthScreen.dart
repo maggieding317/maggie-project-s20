@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/recommendation.dart';
 import 'package:flutter_app/secondScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/cupertino.dart';
 
 class MySixthPage extends StatefulWidget {
   MySixthPage({Key key, this.title,this.recommendationAct, this.recommendationFood}) : super(key: key);
   final String title;
   var recommendationAct;
-  var recommendationFood;
+  Recommendation recommendationFood;
   @override
   _MySixthPageState createState() => _MySixthPageState();
 }
@@ -17,21 +18,18 @@ class _MySixthPageState extends State<MySixthPage> {
   var rating = 'N/A';
   var healthRating = 'N/A';
 
-  _MySixthPageState() {
-    Recommendation.getRating().then((res) {
-      print("rating " + res);
-      setState(() {
-        rating = res;
-      });
-    });
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     var  b = context;
     loadProfileInfo();
+    widget.recommendationFood.getRating().then((res) {
+      print("rating " + res);
+      setState(() {
+        rating = res;
+      });
+    });
   }
   var _weight;
   var _head;
@@ -221,11 +219,11 @@ class _MySixthPageState extends State<MySixthPage> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct,foodRecommendation: widget.recommendationFood,)),
+                          CupertinoPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct,foodRecommendation: widget.recommendationFood,)),
                         );
                       },
                       child: Text(
-                        "ADD",
+                        "Edit",
                       ),
                     ),
                   ),

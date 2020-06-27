@@ -3,6 +3,7 @@ import 'thirdScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app/recommendation_activity.dart';
 import 'recommendation.dart';
+import 'package:flutter/cupertino.dart';
 
 class MyNextPage extends StatefulWidget {
   MyNextPage({Key key, this.title,this.recommendationActivity,this.foodRecommendation}) : super(key: key);
@@ -281,9 +282,10 @@ class _MyNextPageState extends State<MyNextPage> {
                   print(headTextFieldController.text.toString());
                   print(_gender);
                   print(ageTextFieldController.text.toString());
+                  Navigator.pop(context);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyThirdPage(title: 'Third Page',recommendationActivity: widget.recommendationActivity,)),
+                    CupertinoPageRoute(builder: (context) => MyThirdPage(title: 'Third Page',recommendationActivity: widget.recommendationActivity,foodRecommendation: widget.foodRecommendation,)),
                   );
                 },
                 child:

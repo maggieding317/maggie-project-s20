@@ -81,7 +81,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                      height: 80,
                                      width: 80,
                                      child:
-                                     Image.network(Recommendation.food_map[breakfastList[index]]['image']),
+                                     Image.network(widget.recommendation.food_map[breakfastList[index]]['image']),
                                    ),
                                  ),
                                  Expanded(
@@ -89,7 +89,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    child: Container(
                                      margin: EdgeInsets.only(right: 30),
                                      child:Text(
-                                       Recommendation.food_map[breakfastList[index]]['name'],
+                                       widget.recommendation.food_map[breakfastList[index]]['name'],
                                        textAlign: TextAlign.left,
                                      ),
                                    ),
@@ -135,7 +135,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    height: 80,
                                    width: 80,
                                    child:
-                                    Image.network(Recommendation.food_map[lunchList[index]]['image']),
+                                    Image.network(widget.recommendation.food_map[lunchList[index]]['image']),
                                  ),
                                ),
                                Expanded(
@@ -143,7 +143,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
-                                     Recommendation.food_map[lunchList[index]]['name'],
+                                     widget.recommendation.food_map[lunchList[index]]['name'],
                                      textAlign: TextAlign.left,
                                    ),
                                  ),
@@ -188,7 +188,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    height: 80,
                                    width: 80,
                                    child:
-                                   Image.network(Recommendation.food_map[dinnerList[index]]['image']),
+                                   Image.network(widget.recommendation.food_map[dinnerList[index]]['image']),
                                  ),
                                ),
                                Expanded(
@@ -196,7 +196,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
-                                     Recommendation.food_map[dinnerList[index]]['name'],
+                                     widget.recommendation.food_map[dinnerList[index]]['name'],
                                      textAlign: TextAlign.left,
                                    ),
                                  ),

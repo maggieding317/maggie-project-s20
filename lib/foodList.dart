@@ -3,9 +3,9 @@ import 'package:flutter_app/recommendation.dart';
 import 'fifthScreen.dart';
 
 class FoodList extends StatefulWidget {
-  FoodList({Key key, this.title}) : super(key: key);
+  FoodList({Key key, this.title,this.foodRecommendation}) : super(key: key);
 
-
+  Recommendation foodRecommendation;
   final String title;
 
   @override
@@ -18,7 +18,7 @@ class _FoodListState extends State<FoodList> {
   @override
   void initState() {
     super.initState();
-    foodList = Recommendation.getFoodList();
+    foodList =widget.foodRecommendation.getFoodList();
   }
 
   var foodList = [];
