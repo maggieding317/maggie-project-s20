@@ -17,7 +17,7 @@ class _MySixthPageState extends State<MySixthPage> {
   var rating = 'N/A';
 
   _MySixthPageState() {
-    Recommendataion.getRating().then((res) {
+    Recommendation.getRating().then((res) {
       print("rating " + res);
       setState(() {
         rating = res;

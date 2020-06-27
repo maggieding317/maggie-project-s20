@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/fifthScreen.dart';
 import 'package:flutter_app/yourFoodScreen.dart';
 import 'fourthScreen.dart';
+import 'recommendation.dart';
 
 
 class MySeventhPage extends StatefulWidget {
-  MySeventhPage({Key key, this.title}) : super(key: key);
+  MySeventhPage({Key key, this.title,this.foodRecommendation}) : super(key: key);
 
-
+  Recommendation foodRecommendation;
   final String title;
 
   @override
@@ -37,7 +38,7 @@ class _MySeventhPageState extends State<MySeventhPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MyFourthPage(title: 'Fourth Page')),
+                      MaterialPageRoute(builder: (context) => MyFourthPage(title: 'Fourth Page',recommendation: widget.foodRecommendation,)),
                     );
                   },
                   child: const Text(

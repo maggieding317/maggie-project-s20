@@ -7,7 +7,7 @@ import 'dart:convert';
 class RecommendataionSchedule {
 
 
-  Recommendataion foodRec = Recommendataion();
+  Recommendation foodRec = Recommendation();
   RecommendationActivity activityRec;
   RecommendataionSchedule(this.activityRec){}
 
@@ -53,8 +53,7 @@ class RecommendataionSchedule {
   }
 
   void demo() {
-    RecommendationActivity recommendationActivity= RecommendationActivity();
-    recommendationActivity.init();
+    RecommendationActivity recommendationActivity = RecommendationActivity();
     RecommendataionSchedule recSchedule = RecommendataionSchedule(recommendationActivity);
     recSchedule.get_recommended_schedul().then((schedule) {
       print("recommended schedule is: " + schedule.toString());

@@ -5,14 +5,16 @@ import 'package:flutter_app/seventhScreen.dart';
 import 'package:flutter_app/sixthScreen.dart';
 import 'fourthScreen.dart';
 import 'package:flutter_app/recommendation_activity.dart';
+import 'recommendation.dart';
 
 
 class MyThirdPage extends StatefulWidget {
-  MyThirdPage({Key key, this.title,this.recommendationActivity}) : super(key: key);
+  MyThirdPage({Key key, this.title,this.recommendationActivity,this.foodRecommendation}) : super(key: key);
 
 
   final String title;
   RecommendationActivity recommendationActivity;
+  Recommendation foodRecommendation;
 
 
   @override
@@ -29,7 +31,7 @@ class _MyThirdPageState extends State<MyThirdPage> {
   void initState() {
     super.initState();
     _widgetOptions= <Widget>[
-    MySeventhPage(title: "7th page",),
+    MySeventhPage(title: "7th page",foodRecommendation: widget.foodRecommendation,),
     MyEighthPage(title: "8th page",recommendation: widget.recommendationActivity,),
     MyFifthPage(title: "5th page",recommendationActivity: widget.recommendationActivity,),
     MySixthPage(title: "6th page",recommendationAct: widget.recommendationActivity,),

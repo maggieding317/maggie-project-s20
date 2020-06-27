@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'thirdScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app/recommendation_activity.dart';
+import 'recommendation.dart';
 
 class MyNextPage extends StatefulWidget {
-  MyNextPage({Key key, this.title,this.recommendationActivity}) : super(key: key);
+  MyNextPage({Key key, this.title,this.recommendationActivity,this.foodRecommendation}) : super(key: key);
 
   final String title;
   RecommendationActivity recommendationActivity;
+  Recommendation foodRecommendation;
 
   @override
   _MyNextPageState createState() => _MyNextPageState();

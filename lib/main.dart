@@ -6,7 +6,9 @@ import 'secondScreen.dart';
 import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
-import 'package:flutter_app/recommendation_activity.dart';
+import 'recommendation_activity.dart';
+import 'recommendation.dart';
+
 
 void main() {
   // File path to a file in the current directory
@@ -59,7 +61,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var loading = true;
   double _progressValue = 0.0;
-  RecommendationActivity recommendataionActivity=RecommendationActivity();
+  RecommendationActivity recommendation_activity = RecommendationActivity();
+  Recommendation food_recommendation = Recommendation();
 
   void _updateProgress() {
     const oneSec = const Duration(seconds: 1);
@@ -76,13 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyThirdPage(title: '??? Page',recommendationActivity: recommendataionActivity,)),
+                    builder: (context) => MyThirdPage(title: '??? Page',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
               );
             } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity: recommendataionActivity,)),
+                    builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
               );
             }
           });
@@ -96,7 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    recommendataionActivity.init();
 
     _updateProgress();
 //    Timer(Duration(seconds: 4), () {

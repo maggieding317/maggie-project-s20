@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/recommendation.dart';
 import 'fifthScreen.dart';
+import 'recommendation.dart';
 
 class MyFourthPage extends StatefulWidget {
-  MyFourthPage({Key key, this.title}) : super(key: key);
+  MyFourthPage({Key key, this.title,this.recommendation}) : super(key: key);
 
   final String title;
+  Recommendation recommendation;
+
 
   @override
   _MyFourthPageState createState() => _MyFourthPageState();
@@ -13,7 +16,6 @@ class MyFourthPage extends StatefulWidget {
 
 class _MyFourthPageState extends State<MyFourthPage> {
 
-  var recommendation = Recommendataion();
 
   var breakfastList = [ ];
 
@@ -24,7 +26,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
   @override
   void initState() {
     super.initState();
-    recommendation.get_recommended_food().then((rec_map){
+    widget.recommendation.get_recommended_food().then((rec_map){
       setState(() {
         breakfastList = rec_map['breakfast'];
         lunchList = rec_map['lunch'];
@@ -79,7 +81,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                      height: 80,
                                      width: 80,
                                      child:
-                                     Image.network(Recommendataion.food_map[breakfastList[index]]['image']),
+                                     Image.network(Recommendation.food_map[breakfastList[index]]['image']),
                                    ),
                                  ),
                                  Expanded(
@@ -87,7 +89,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    child: Container(
                                      margin: EdgeInsets.only(right: 30),
                                      child:Text(
-                                       Recommendataion.food_map[breakfastList[index]]['name'],
+                                       Recommendation.food_map[breakfastList[index]]['name'],
                                        textAlign: TextAlign.left,
                                      ),
                                    ),
@@ -133,7 +135,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    height: 80,
                                    width: 80,
                                    child:
-                                    Image.network(Recommendataion.food_map[lunchList[index]]['image']),
+                                    Image.network(Recommendation.food_map[lunchList[index]]['image']),
                                  ),
                                ),
                                Expanded(
@@ -141,7 +143,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
-                                     Recommendataion.food_map[lunchList[index]]['name'],
+                                     Recommendation.food_map[lunchList[index]]['name'],
                                      textAlign: TextAlign.left,
                                    ),
                                  ),
@@ -186,7 +188,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                    height: 80,
                                    width: 80,
                                    child:
-                                   Image.network(Recommendataion.food_map[dinnerList[index]]['image']),
+                                   Image.network(Recommendation.food_map[dinnerList[index]]['image']),
                                  ),
                                ),
                                Expanded(
@@ -194,7 +196,7 @@ class _MyFourthPageState extends State<MyFourthPage> {
                                  child: Container(
                                    margin: EdgeInsets.only(right: 30),
                                    child:Text(
-                                     Recommendataion.food_map[dinnerList[index]]['name'],
+                                     Recommendation.food_map[dinnerList[index]]['name'],
                                      textAlign: TextAlign.left,
                                    ),
                                  ),

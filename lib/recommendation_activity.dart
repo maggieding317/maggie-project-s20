@@ -1,45 +1,56 @@
-import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'dart:async' show Future;
-import 'package:flutter/services.dart' show rootBundle;
+//import 'package:flutter/services.dart' show rootBundle;
+import 'package:http/http.dart' as http;
 
-class Recommendation {
-  var recommendation_options = {};
-  Map<String, dynamic> activity_map = {};
-
-  Recommendation({this.recommendation_options, this.activity_map});
-
-  factory Recommendation.fromJson(Map<String, dynamic> parsedJson) {
-    return Recommendation(
-      activity_map: parsedJson['activity'],
-      recommendation_options: parsedJson['option'],
-    );
-  }
-}
+//class Recommendation {
+//  var recommendation_options = {};
+//  Map<String, dynamic> activity_map = {};
+//
+//  Recommendation({this.recommendation_options, this.activity_map});
+//
+//  factory Recommendation.fromJson(Map<String, dynamic> parsedJson) {
+//    return Recommendation(
+//      activity_map: parsedJson['activity'],
+//      recommendation_options: parsedJson['option'],
+//    );
+//  }
+//}
 
 class RecommendationActivity {
   static var activity_map;
   var recommendation_options;
 
-  init() {
-    loadRecomendation().then((recommendation) {
-      activity_map = recommendation.activity_map;
-      recommendation_options = recommendation.recommendation_options;
+  RecommendationActivity(){
+    http.get('https://marisabelc.github.io/baby_food/recommendation_activity.json').then((res) {
+//      print('======get======');
+      var resObj = jsonDecode(res.body);
+      activity_map =resObj['activity'];
+      recommendation_options= resObj['option'];
+    }).catchError((e){
+      print('failed to get response');
     });
   }
 
-  Future<String> _loadRecomendationAsset() async {
-    return await rootBundle.loadString('assets/recommendation_activity.json');
-  }
-
-  Future<Recommendation> loadRecomendation() async {
-//    await wait(2);
-
-    String jsonString = await _loadRecomendationAsset();
-    final jsonResponse = json.decode(jsonString);
-    return new Recommendation.fromJson(jsonResponse);
-  }
+//  init() {
+//    loadRecomendation().then((recommendation) {
+//      activity_map = recommendation.activity_map;
+//      recommendation_options = recommendation.recommendation_options;
+//    });
+//  }
+//
+//  Future<String> _loadRecomendationAsset() async {
+//    return await rootBundle.loadString('assets/recommendation_activity.json');
+//  }
+//
+//  Future<Recommendation> loadRecomendation() async {
+////    await wait(2);
+//
+//    String jsonString = await _loadRecomendationAsset();
+//    final jsonResponse = json.decode(jsonString);
+//    return new Recommendation.fromJson(jsonResponse);
+//  }
 
 //  Future wait(int seconds) {
 //    return new Future.delayed(Duration(seconds: seconds), () => {});

@@ -42,15 +42,15 @@ class _yourFoodPageState extends State<yourFoodPage> {
     setState(() {
       if (meal == "breakfast"){
         breakfastList.add(result);
-        Recommendataion.recordFoodToday("breakfast", breakfastList);
+        Recommendation.recordFoodToday("breakfast", breakfastList);
       }
       if (meal == "lunch"){
         lunchList.add(result);
-        Recommendataion.recordFoodToday("lunch", lunchList);
+        Recommendation.recordFoodToday("lunch", lunchList);
       }
       if (meal == "dinner"){
         dinnerList.add(result);
-        Recommendataion.recordFoodToday("dinner", dinnerList);
+        Recommendation.recordFoodToday("dinner", dinnerList);
       }
     });
   }
@@ -58,16 +58,16 @@ class _yourFoodPageState extends State<yourFoodPage> {
   @override
   void initState() {
     super.initState();
-    Recommendataion.loadFoodToday("breakfast").then((list) {
+    Recommendation.loadFoodToday("breakfast").then((list) {
       print(list);
       setState(() {
         this.breakfastList = list;
       });
     });
-    Recommendataion.loadFoodToday("lunch").then((list) {
+    Recommendation.loadFoodToday("lunch").then((list) {
       this.lunchList = list;
     });
-    Recommendataion.loadFoodToday("dinner").then((list) {
+    Recommendation.loadFoodToday("dinner").then((list) {
       this.dinnerList = list;
     });
   }
@@ -144,7 +144,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                        onPressed: (){
                                          setState(() {
                                            breakfastList.removeAt(index);
-                                           Recommendataion.recordFoodToday("breakfast", breakfastList);
+                                           Recommendation.recordFoodToday("breakfast", breakfastList);
                                          });
                                        },
                                      ),
@@ -219,7 +219,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                      onPressed: (){
                                        setState(() {
                                          lunchList.removeAt(index);
-                                         Recommendataion.recordFoodToday("lunch", lunchList);
+                                         Recommendation.recordFoodToday("lunch", lunchList);
                                        });
                                      },
                                    ),
@@ -291,7 +291,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                      onPressed: (){
                                        setState(() {
                                          dinnerList.removeAt(index);
-                                         Recommendataion.recordFoodToday("dinner", dinnerList);
+                                         Recommendation.recordFoodToday("dinner", dinnerList);
                                        });
                                      },
                                    ),
