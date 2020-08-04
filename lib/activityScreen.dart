@@ -2,21 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/activityDetail.dart';
 import 'package:flutter_app/recommendation_activity.dart';
 
-class MyEighthPage extends StatefulWidget {
-  MyEighthPage({Key key, this.title, this.recommendation}) : super(key: key);
+class RecommendedActivityPage extends StatefulWidget {
+  RecommendedActivityPage({Key key, this.title, this.recommendation}) : super(key: key);
   final String title;
   RecommendationActivity recommendation;
   @override
-  _MyEighthPageState createState() => _MyEighthPageState();
+  _RecommendedActivityPageState createState() => _RecommendedActivityPageState();
 }
 
-class _MyEighthPageState extends State<MyEighthPage> {
+class _RecommendedActivityPageState extends State<RecommendedActivityPage> {
   void initState() {
     super.initState();
     widget.recommendation.get_recommended_activities().then((rec_map) {
       setState(() {
         activityList = rec_map;
-        print('acti');
         print(activityList);
       });
     }).catchError((e) {

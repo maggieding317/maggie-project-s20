@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/fifthScreen.dart';
+import 'package:flutter_app/scheduleScreen.dart';
 import 'package:flutter_app/yourFoodScreen.dart';
-import 'fourthScreen.dart';
+import 'foodRecommendationScreen.dart';
 import 'recommendation.dart';
 
 
-class MySeventhPage extends StatefulWidget {
-  MySeventhPage({Key key, this.title,this.foodRecommendation}) : super(key: key);
+class FoodPage extends StatefulWidget {
+  FoodPage({Key key, this.title,this.foodRecommendation}) : super(key: key);
 
   Recommendation foodRecommendation;
   final String title;
 
   @override
-  _MySeventhPageState createState() => _MySeventhPageState();
+  _FoodPageState createState() => _FoodPageState();
 }
 
-class _MySeventhPageState extends State<MySeventhPage> {
+class _FoodPageState extends State<FoodPage> {
 
 
   @override
@@ -39,7 +39,7 @@ class _MySeventhPageState extends State<MySeventhPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MyFourthPage(title: 'Fourth Page',recommendation: widget.foodRecommendation,)),
+                      MaterialPageRoute(builder: (context) => FoodRecommendationPage(title: '推荐菜单',recommendation: widget.foodRecommendation,)),
                     );
                   },
                   child: const Text(
@@ -57,7 +57,7 @@ class _MySeventhPageState extends State<MySeventhPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => yourFoodPage(title: 'Your Food Page',foodRecommendation: widget.foodRecommendation,)),
+                      MaterialPageRoute(builder: (context) => yourFoodPage(title: '记录菜单',foodRecommendation: widget.foodRecommendation,)),
                     );
                   },
                   child: const Text(

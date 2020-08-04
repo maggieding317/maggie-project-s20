@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/thirdScreen.dart';
-import 'secondScreen.dart';
+import 'package:flutter_app/routeScreen.dart';
+import 'signupScreen.dart';
 //import 'package:path/path.dart';
 //import 'package:path_provider/path_provider.dart';
 import 'package:sembast/sembast_io.dart';
@@ -79,13 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyThirdPage(title: '??? Page',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
+                    builder: (context) => RoutePage(title: '??? Page',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
               );
             } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
+                    builder: (context) => SignUpPage(title: 'Sign Up',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
               );
             }
           });

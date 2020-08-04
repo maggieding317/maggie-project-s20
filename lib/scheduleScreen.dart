@@ -3,18 +3,18 @@ import 'recommendation_schedule.dart';
 import 'recommendation_activity.dart';
 import 'activityDetail.dart';
 
-class MyFifthPage extends StatefulWidget {
-  MyFifthPage({Key key, this.title,this.recommendationActivity}) : super(key: key);
+class SchedulePage extends StatefulWidget {
+  SchedulePage({Key key, this.title,this.recommendationActivity}) : super(key: key);
 
   RecommendationActivity recommendationActivity;
 
   final String title;
 
   @override
-  _MyFifthPageState createState() => _MyFifthPageState();
+  _SchedulePageState createState() => _SchedulePageState();
 }
 
-class _MyFifthPageState extends State<MyFifthPage> {
+class _SchedulePageState extends State<SchedulePage> {
   var recommendation;
   var activityList =[];
   void initState() {

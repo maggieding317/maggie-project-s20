@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'fifthScreen.dart';
 import 'foodList.dart';
 import 'recommendation.dart';
 
@@ -76,219 +75,220 @@ class _yourFoodPageState extends State<yourFoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 243, 231, 100),
-
-      appBar: AppBar(
+       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Color.fromRGBO(255, 180, 105, 100),
         elevation: 0.0,
-        bottomOpacity: 0.0,
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                    child: Text(
-                      "早餐",
-                      textAlign: TextAlign.left,
+        child: Container(
+          color: Color.fromRGBO(255, 243, 231, 100),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                      child: Text(
+                        "早餐",
+                        textAlign: TextAlign.left,
+                      ),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    _navigateAndDisplaySelection(context, "breakfast");
-                  },
-                ),
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: breakfastList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 50,
-                      child: Center(
-                        child: Row(children: <Widget>[
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              child:
-                                  Image.network(breakfastList[index]['image']),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 4,
-                            child: Container(
-                              margin: EdgeInsets.only(right: 30),
-                              child: Text(
-                                breakfastList[index]['name'],
-                                textAlign: TextAlign.left,
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      _navigateAndDisplaySelection(context, "breakfast");
+                    },
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: breakfastList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child:
+                                    Image.network(breakfastList[index]['image']),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              child: IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () {
-                                  setState(() {
-                                    breakfastList.removeAt(index);
-                                    Recommendation.recordFoodToday(
-                                        "breakfast", breakfastList);
-                                  });
-                                },
+                            Expanded(
+                              flex: 4,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  breakfastList[index]['name'],
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                child: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                    setState(() {
+                                      breakfastList.removeAt(index);
+                                      Recommendation.recordFoodToday(
+                                          "breakfast", breakfastList);
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      );
+                    }),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                      child: Text(
+                        "午餐",
+                        textAlign: TextAlign.left,
                       ),
-                    );
-                  }),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                    child: Text(
-                      "午餐",
-                      textAlign: TextAlign.left,
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    _navigateAndDisplaySelection(context, "lunch");
-                  },
-                ),
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: lunchList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 50,
-                      child: Center(
-                        child: Row(children: <Widget>[
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              child: Image.network(lunchList[index]['image']),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 4,
-                            child: Container(
-                              margin: EdgeInsets.only(right: 30),
-                              child: Text(
-                                lunchList[index]['name'],
-                                textAlign: TextAlign.left,
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      _navigateAndDisplaySelection(context, "lunch");
+                    },
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: lunchList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(lunchList[index]['image']),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              child: IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () {
-                                  setState(() {
-                                    lunchList.removeAt(index);
-                                    Recommendation.recordFoodToday(
-                                        "lunch", lunchList);
-                                  });
-                                },
+                            Expanded(
+                              flex: 4,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  lunchList[index]['name'],
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                child: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                    setState(() {
+                                      lunchList.removeAt(index);
+                                      Recommendation.recordFoodToday(
+                                          "lunch", lunchList);
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      );
+                    }),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                      child: Text(
+                        "晚餐",
+                        textAlign: TextAlign.left,
                       ),
-                    );
-                  }),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                    child: Text(
-                      "晚餐",
-                      textAlign: TextAlign.left,
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () {
-                    _navigateAndDisplaySelection(context, "dinner");
-                  },
-                ),
-              ],
-            ),
-            Expanded(
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: dinnerList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 50,
-                      child: Center(
-                        child: Row(children: <Widget>[
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              child: Image.network(dinnerList[index]['image']),
-                            ),
-                          ),
-                          Expanded(
-                            flex: 4,
-                            child: Container(
-                              margin: EdgeInsets.only(right: 30),
-                              child: Text(
-                                dinnerList[index]['name'],
-                                textAlign: TextAlign.left,
+                  IconButton(
+                    icon: Icon(Icons.add),
+                    onPressed: () {
+                      _navigateAndDisplaySelection(context, "dinner");
+                    },
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: dinnerList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(dinnerList[index]['image']),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              child: IconButton(
-                                icon: Icon(Icons.delete),
-                                onPressed: () {
-                                  setState(() {
-                                    dinnerList.removeAt(index);
-                                    Recommendation.recordFoodToday(
-                                        "dinner", dinnerList);
-                                  });
-                                },
+                            Expanded(
+                              flex: 4,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  dinnerList[index]['name'],
+                                  textAlign: TextAlign.left,
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
-                      ),
-                    );
-                  }),
-            ),
-          ],
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                child: IconButton(
+                                  icon: Icon(Icons.delete),
+                                  onPressed: () {
+                                    setState(() {
+                                      dinnerList.removeAt(index);
+                                      Recommendation.recordFoodToday(
+                                          "dinner", dinnerList);
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );
