@@ -84,46 +84,63 @@ class _MySixthPageState extends State<MySixthPage> {
 
   }
 
+  fontStyle(){
+    return TextStyle(fontSize: 15,color:Color.fromRGBO(179, 77, 77, 100) );
+  }
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
-
       body: Center(
 
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
+        child: Container(
+          color: Color.fromRGBO(255, 243, 231, 100),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex:1,
+                child: Container(
+                  color: Color.fromRGBO(255, 214, 214, 100),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Container(
 
-                    margin: EdgeInsets.only(right: 10),
-                    alignment: Alignment.centerRight,
-                    child:
-                    CircleAvatar(
-                      backgroundImage: NetworkImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"),
-                      radius: 40,
-                      backgroundColor: Colors.white,
-                    ),
+                          margin: EdgeInsets.only(right: 10),
+                          alignment: Alignment.centerRight,
+                          child:
+                          CircleAvatar(
+                            backgroundImage: NetworkImage("https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png"),
+                            radius: 40,
+                            backgroundColor: Colors.white,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          margin: EdgeInsets.only(left:10, right: 30,top: 100,bottom: 100),
+                          child:Text(
+                            "$_id",
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.only(left:10, right: 30,top: 100,bottom: 100),
-                    child:Text(
-                      "$_id",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
 
-            Row(
-              children: <Widget>[
+              Expanded(
+                flex:2,
+                child: Container(
+                  margin: EdgeInsets.only(left: 75, right: 50),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
 //                Expanded(
 //                  flex: 1,
 //                  child: Container(
@@ -137,100 +154,119 @@ class _MySixthPageState extends State<MySixthPage> {
 //                    ),
 //                  ),
 //                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:10,right: 30),
-                    child:Text(
-                      "health rating：$healthRating",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:10,right: 30),
-                    child:Text(
-                      "体重：$_weight",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(top:50,right: 50),
-                    child:Text(
-                      "身高：$_height",
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:50,top:50),
-                    child:Text(
-                      "头围：$_head",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(top:50,right: 50),
-                    child:Text(
-                      "性别：$_gender",
-                      textAlign: TextAlign.right,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(left:50,top:50,right: 30),
-                    child:Text(
-                      "年龄：$_age",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.only(top:50,bottom: 50),
-                    child: FlatButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct,foodRecommendation: widget.recommendationFood,)),
-                        );
-                      },
-                      child: Text(
-                        "Edit",
+                          Expanded(
+                            flex: 1,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                child:Text(
+                                  "health rating：$healthRating",
+                                  textAlign: TextAlign.right,
+                                  style: fontStyle(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin: EdgeInsets.only(right: 50),
+                              child:Text(
+                                "体重：$_weight",
+                                textAlign: TextAlign.right,
+                                style: fontStyle(),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                child:Text(
+                                  "身高：$_height",
+                                  textAlign: TextAlign.right,
+                                  style: fontStyle(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin: EdgeInsets.only(left:30,top:50),
+                              child:Text(
+                                "头围：$_head",
+                                textAlign: TextAlign.left,
+                                style: fontStyle(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Container(
+                                child:Text(
+                                  "性别：$_gender",
+                                  textAlign: TextAlign.right,
+                                  style: fontStyle(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin: EdgeInsets.only(left:30,top:50,right: 30),
+                              child:Text(
+                                "年龄：$_age",
+                                textAlign: TextAlign.left,
+                                style: fontStyle(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin: EdgeInsets.only(top:50,bottom: 50),
+                              child: FlatButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(builder: (context) => MyNextPage(title: 'Second Page',recommendationActivity:widget.recommendationAct,foodRecommendation: widget.recommendationFood,)),
+                                  );
+                                },
+                                child: Text(
+                                  "Edit",
+                                  style: fontStyle(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+
+
+            ],
+          ),
         ),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.

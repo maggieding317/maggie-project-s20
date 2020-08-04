@@ -29,7 +29,9 @@ class _MyEighthPageState extends State<MyEighthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(255, 243, 231, 100),
       body: Center(
+
         child: Column(
           children: <Widget>[
             Row(

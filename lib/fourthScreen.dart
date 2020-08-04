@@ -41,6 +41,8 @@ class _MyFourthPageState extends State<MyFourthPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: Color.fromRGBO(255, 243, 231, 100),
+
       appBar: AppBar(
 
         title: Text(widget.title),

@@ -100,6 +100,7 @@ class _MyThirdPageState extends State<MyThirdPage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        backgroundColor: Color.fromRGBO(255, 180, 105, 100),elevation: 0.0,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

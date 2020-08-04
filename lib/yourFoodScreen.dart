@@ -76,8 +76,12 @@ class _yourFoodPageState extends State<yourFoodPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(255, 243, 231, 100),
+
       appBar: AppBar(
         title: Text(widget.title),
+        elevation: 0.0,
+        bottomOpacity: 0.0,
       ),
       body: Center(
         child: Column(
