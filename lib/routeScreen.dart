@@ -5,6 +5,7 @@ import 'package:flutter_app/foodScreen.dart';
 import 'package:flutter_app/profileScreen.dart';
 import 'package:flutter_app/recommendation_activity.dart';
 import 'recommendation.dart';
+import 'foodRecommendationScreen.dart';
 
 class RoutePage extends StatefulWidget {
   RoutePage(
@@ -32,9 +33,9 @@ class _RoutePageState extends State<RoutePage> {
   void initState() {
     super.initState();
     _widgetOptions = <Widget>[
-      FoodPage(
-        title: "7th page",
-        foodRecommendation: widget.foodRecommendation,
+      FoodRecommendationPage(
+        title: '推荐菜单',
+        recommendation: widget.foodRecommendation,
       ),
       RecommendedActivityPage(
         title: "8th page",

@@ -59,7 +59,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
             Expanded(
               child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
+                  //padding: const EdgeInsets.all(1),
                   itemCount: activityList.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
@@ -71,14 +71,15 @@ class _SchedulePageState extends State<SchedulePage> {
                         );
                       },
                       title:Container(
-                        height: 50,
                         child: Center(
                           child: Row(
                               children: <Widget>[
                                 Expanded(
                                   flex: 2,
                                   child: Container(
-                                    margin: EdgeInsets.only(right: 30),
+                                    color: index %2 == 0 ? Color.fromRGBO(255, 223, 191, 100) :Color.fromRGBO(255, 243, 231, 100),
+                                    height: 60,
+                                    alignment: Alignment.center,
                                     child:Text(
                                       activityList[index]['time'],
                                       textAlign: TextAlign.left,
@@ -88,8 +89,10 @@ class _SchedulePageState extends State<SchedulePage> {
                                 Expanded(
                                   flex: 1,
                                   child: Container(
-                                    height: 80,
+                                    color: index %2 == 1 ? Color.fromRGBO(255, 223, 191, 100) :Color.fromRGBO(255, 243, 231, 100),
+                                    height: 60,
                                     width: 80,
+                                    alignment: Alignment.center,
                                     child:
                                     Image.network(RecommendationActivity.activity_map[activityList[index]['name']]['image']),
                                   ),
@@ -97,7 +100,10 @@ class _SchedulePageState extends State<SchedulePage> {
                                 Expanded(
                                   flex: 2,
                                   child: Container(
+                                    color: index %2 == 1 ? Color.fromRGBO(255, 223, 191, 100) :Color.fromRGBO(255, 243, 231, 100),
                                     margin: EdgeInsets.only(right: 30),
+                                    height: 60,
+                                    alignment: Alignment.center,
                                     child:Text(
                                       RecommendationActivity.activity_map[activityList[index]['name']]['name'],
                                       textAlign: TextAlign.left,

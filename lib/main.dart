@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'recommendation_activity.dart';
 import 'recommendation.dart';
-
+import 'foodRecommendationScreen.dart';
 
 void main() {
   // File path to a file in the current directory

@@ -95,7 +95,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(255, 180, 105, 100),
+      backgroundColor: Color.fromRGBO(255, 243, 231, 100),
       body: Center(
         child: Container(
           color: Color.fromRGBO(255, 243, 231, 100),
