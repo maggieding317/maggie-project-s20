@@ -4,7 +4,6 @@ import 'package:flutter_app/yourFoodScreen.dart';
 import 'recommendation.dart';
 
 class FoodRecommendationPage extends StatefulWidget {
-
   FoodRecommendationPage({Key key, this.title, this.recommendation})
       : super(key: key);
 
@@ -45,195 +44,156 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
 //        title: Text(widget.title),
 //      ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-                flex: 2,
-                child: Container(
-                    child: Row(children: <Widget>[
-                      Expanded(
-                          flex: 5,
-                          child: Container(
-                            child: FlatButton(
-                                child: Text('记录菜单 '),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => yourFoodPage(title: '记录菜单',foodRecommendation: widget.recommendation,)),
-                                  );
-//                        swapColor(true);
-                                }),
-//                  color: _allColor,
-                          )),
-                      Expanded(
-                          flex: 5,
-                          child: Container(
-                            child:
-                            FlatButton(child: Text('推荐菜单'), onPressed: () {}),
-                          ))
-                    ]))),
-            Expanded(
-              flex: 9,
-              child: Container(
-                color: Color.fromRGBO(255, 243, 231, 100),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            margin:
-                            EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                            child: Text(
-                              "早餐",
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
+        child: Container(
+          color: Color.fromRGBO(255, 243, 231, 100),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                      child: Text(
+                        "早餐",
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                    Expanded(
-                      child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: breakfastList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              height: 50,
-                              child: Center(
-                                child: Row(children: <Widget>[
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(
-                                      height: 80,
-                                      width: 80,
-                                      child: Image.network(widget.recommendation
-                                          .food_map[breakfastList[index]]
-                                      ['image']),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 30),
-                                      child: Text(
-                                        widget.recommendation
-                                            .food_map[breakfastList[index]]
-                                        ['name'],
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
-                                  ),
-                                ]),
-                              ),
-                            );
-                          }),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            margin:
-                            EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                            child: Text(
-                              "午餐",
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: lunchList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              height: 50,
-                              child: Center(
-                                child: Row(children: <Widget>[
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(
-                                      height: 80,
-                                      width: 80,
-                                      child: Image.network(widget.recommendation
-                                          .food_map[lunchList[index]]['image']),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 30),
-                                      child: Text(
-                                        widget.recommendation
-                                            .food_map[lunchList[index]]['name'],
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
-                                  ),
-                                ]),
-                              ),
-                            );
-                          }),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            margin:
-                            EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                            child: Text(
-                              "晚餐",
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                          padding: const EdgeInsets.all(8),
-                          itemCount: dinnerList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              height: 50,
-                              child: Center(
-                                child: Row(children: <Widget>[
-                                  Expanded(
-                                    flex: 1,
-                                    child: Container(
-                                      height: 80,
-                                      width: 80,
-                                      child: Image.network(widget.recommendation
-                                          .food_map[dinnerList[index]]
-                                      ['image']),
-                                    ),
-                                  ),
-                                  Expanded(
-                                    flex: 2,
-                                    child: Container(
-                                      margin: EdgeInsets.only(right: 30),
-                                      child: Text(
-                                        widget.recommendation
-                                            .food_map[dinnerList[index]]
-                                        ['name'],
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
-                                  ),
-                                ]),
-                              ),
-                            );
-                          }),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: breakfastList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(widget.recommendation
+                                    .food_map[breakfastList[index]]['image']),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  widget.recommendation
+                                      .food_map[breakfastList[index]]['name'],
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      );
+                    }),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                      child: Text(
+                        "午餐",
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: lunchList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(widget.recommendation
+                                    .food_map[lunchList[index]]['image']),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  widget.recommendation
+                                      .food_map[lunchList[index]]['name'],
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      );
+                    }),
+              ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                      child: Text(
+                        "晚餐",
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: dinnerList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 50,
+                        child: Center(
+                          child: Row(children: <Widget>[
+                            Expanded(
+                              flex: 1,
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                child: Image.network(widget.recommendation
+                                    .food_map[dinnerList[index]]['image']),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Container(
+                                margin: EdgeInsets.only(right: 30),
+                                child: Text(
+                                  widget.recommendation
+                                      .food_map[dinnerList[index]]['name'],
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      );
+                    }),
+              ),
+            ],
+          ),
         ),
       ),
     );

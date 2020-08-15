@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/routeScreen.dart';
 import 'signupScreen.dart';
-//import 'package:path/path.dart';
-//import 'package:path_provider/path_provider.dart';
-import 'package:sembast/sembast_io.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'recommendation_activity.dart';
 import 'recommendation.dart';
-import 'foodRecommendationScreen.dart';
+
 
 void main() {
   // File path to a file in the current directory
@@ -137,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        
+
         //backgroundColor: Color.fromRGBO( , g, b, opacity),
         title: Text(widget.title),
       ),
@@ -220,3 +217,88 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+//// Copyright 2017 The Chromium Authors. All rights reserved.
+//// Use of this source code is governed by a BSD-style license that can be
+//// found in the LICENSE file.
+//
+//import 'package:flutter/material.dart';
+//
+//class MyApp extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//      home: DefaultTabController(
+//        length: choices.length,
+//        child: Scaffold(
+//          appBar: AppBar(
+//            bottom: TabBar(
+//              isScrollable: true,
+//              tabs: choices.map((Choice choice) {
+//                return
+//                  Container(
+//                    width: 150,
+//                    child: Center(
+//                      child: Tab(
+//                        text: choice.title,
+//
+////                  icon: Icon(choice.icon),
+//                      ),
+//                    ),
+//                  );
+//              }).toList(),
+//            ),
+//          ),
+//          body: TabBarView(
+//            children: choices.map((Choice choice) {
+//              return Padding(
+//                padding: const EdgeInsets.all(16.0),
+//                child: ChoiceCard(choice: choice),
+//              );
+//            }).toList(),
+//          ),
+//        ),
+//      ),
+//    );
+//  }
+//}
+//
+//class Choice {
+//  const Choice({this.title, this.icon});
+//
+//  final String title;
+//  final IconData icon;
+//}
+//
+//const List<Choice> choices = const <Choice>[
+//
+//  const Choice(title: '推荐菜单'),
+//  const Choice(title: '记录菜单 '),
+//];
+//
+//class ChoiceCard extends StatelessWidget {
+//  const ChoiceCard({Key key, this.choice}) : super(key: key);
+//
+//  final Choice choice;
+//
+//  @override
+//  Widget build(BuildContext context) {
+//    final TextStyle textStyle = Theme.of(context).textTheme.headline4;
+//    return Card(
+//      color: Colors.white,
+//      child: Center(
+//        child: Column(
+//          mainAxisSize: MainAxisSize.min,
+//          crossAxisAlignment: CrossAxisAlignment.center,
+//          children: <Widget>[
+//            Icon(choice.icon, size: 128.0, color: textStyle.color),
+//            Text(choice.title, style: textStyle),
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//}
+//
+//void main() {
+//  runApp(MyApp());
+//}

@@ -96,6 +96,14 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(255, 243, 231, 100),
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+        ),
+        leading: Container(),
+        backgroundColor: Color.fromRGBO(255, 180, 105, 100),
+        elevation: 0.0,
+      ),
       body: Center(
         child: Container(
           color: Color.fromRGBO(255, 243, 231, 100),
@@ -123,11 +131,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          margin: EdgeInsets.only(
-                              left: 10, right: 30, top: 100, bottom: 100),
+                          alignment: Alignment.center,
                           child: Text(
                             "$_id",
-                            textAlign: TextAlign.left,
+                            style: TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),

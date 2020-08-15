@@ -3,11 +3,13 @@ import 'package:flutter_app/activityDetail.dart';
 import 'package:flutter_app/recommendation_activity.dart';
 
 class RecommendedActivityPage extends StatefulWidget {
-  RecommendedActivityPage({Key key, this.title, this.recommendation}) : super(key: key);
+  RecommendedActivityPage({Key key, this.title, this.recommendation})
+      : super(key: key);
   final String title;
   RecommendationActivity recommendation;
   @override
-  _RecommendedActivityPageState createState() => _RecommendedActivityPageState();
+  _RecommendedActivityPageState createState() =>
+      _RecommendedActivityPageState();
 }
 
 class _RecommendedActivityPageState extends State<RecommendedActivityPage> {
@@ -29,23 +31,19 @@ class _RecommendedActivityPageState extends State<RecommendedActivityPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(255, 243, 231, 100),
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+        ),
+        leading: Container(),
+        backgroundColor: Color.fromRGBO(255, 180, 105, 100),
+        elevation: 0.0,
+      ),
       body: Center(
-
         child: Column(
           children: <Widget>[
             Row(
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                    child: Text(
-                      "Recommended Activity",
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-              ],
+              children: <Widget>[],
             ),
             Expanded(
               child: ListView.builder(

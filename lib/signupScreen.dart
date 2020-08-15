@@ -37,9 +37,12 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: AppBar(
-//        title: Text(widget.title),
-//      ),
+      appBar: AppBar(
+        title: Text(widget.title),
+        leading: Container(),
+        backgroundColor: Color.fromRGBO(255, 180, 105, 100),
+        elevation: 0.0,
+      ),
       body: Center(
         child: Container(
           decoration: BoxDecoration(
@@ -47,7 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           child: Column(
             children: <Widget>[
-              Text(widget.title),
+
               Expanded(
                 flex: 2,
                 child: Row(
