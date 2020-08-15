@@ -50,7 +50,6 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           child: Column(
             children: <Widget>[
-
               Expanded(
                 flex: 2,
                 child: Row(
@@ -185,50 +184,46 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: 30),
-                        child: Text(
-                          "性别",
-                          textAlign: TextAlign.right,
+                flex: 1,
+                child: Container(
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          margin: EdgeInsets.only(right: 30),
+                          child: Text(
+                            "性别",
+                            textAlign: TextAlign.right,
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: RadioListTile(
-                              groupValue: _gender,
-                              title: Text('女'),
-                              value: '女',
-                              onChanged: (val) {
-                                setState(() {
-                                  _gender = val;
-                                });
-                              },
-                            ),
-                          ),
-                          Expanded(
-                            child: RadioListTile(
-                              groupValue: _gender,
-                              title: Text('男'),
-                              value: '男',
-                              onChanged: (val) {
-                                setState(() {
-                                  _gender = val;
-                                });
-                              },
-                            ),
-                          ),
-                        ],
+                      Expanded(
+                        child: RadioListTile(
+                          groupValue: _gender,
+                          title: Text('女'),
+                          value: '女',
+                          onChanged: (val) {
+                            setState(() {
+                              _gender = val;
+                            });
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: RadioListTile(
+                          groupValue: _gender,
+                          title: Text('男'),
+                          value: '男',
+                          onChanged: (val) {
+                            setState(() {
+                              _gender = val;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -286,6 +281,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   );
                 },
                 child: const Text('Next', style: TextStyle(fontSize: 20)),
+                shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black, width: 2)),
               ),
             ],
           ),

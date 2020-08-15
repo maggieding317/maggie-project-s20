@@ -146,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Expanded(
                 flex: 2,
                 child: Container(
-                  margin: EdgeInsets.only(left: 75, right: 50, top: 20),
+                  margin: EdgeInsets.only(left: 60, right: 50, top: 20),
                   child: Column(
                     children: <Widget>[
                       Row(
@@ -213,7 +213,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               alignment: Alignment.centerLeft,
                               child: Container(
                                 child: Text(
-                                  "性别: " +_gender,
+                                  "性别: $_gender",
                                   textAlign: TextAlign.right,
                                   style: fontStyle(),
                                 ),
@@ -239,8 +239,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           Expanded(
                             flex: 1,
                             child: Container(
-                              margin: EdgeInsets.only(top: 50, bottom: 50),
-                              child: FlatButton(
+                              margin: EdgeInsets.all(50),
+                              child: RaisedButton(
+                                color:Color.fromRGBO(255, 243, 231, 100),
+                                elevation: 0.0,
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -258,6 +260,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                   "编辑信息",
                                   style: fontStyle(),
                                 ),
+
+                                shape: RoundedRectangleBorder(
+                                    side: BorderSide(
+                                        color: Colors.black, width: 2)),
                               ),
                             ),
                           ),
