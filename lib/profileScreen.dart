@@ -25,12 +25,12 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     var b = context;
     loadProfileInfo();
-    widget.recommendationFood.getRating().then((res) {
-      print("rating " + res);
-      setState(() {
-        rating = res;
-      });
-    });
+//    widget.recommendationFood.getRating().then((res) {
+//      print("rating " + res);
+//      setState(() {
+//        rating = res;
+//      });
+//    });
   }
 
   var _weight;
@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   getHealthRating() {
-    if (_gender == 'female') {
+    if (_gender == '女') {
       if (int.parse(_head) <= 2 &&
           int.parse(_height) <= 20 &&
           int.parse(_age) <= 2 &&
@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   fontStyle() {
-    return TextStyle(fontSize: 15, color: Color.fromRGBO(179, 77, 77, 100));
+    return TextStyle(fontSize: 16);
   }
 
   @override
@@ -134,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           alignment: Alignment.center,
                           child: Text(
                             "$_id",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 30),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -146,7 +146,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Expanded(
                 flex: 2,
                 child: Container(
-                  margin: EdgeInsets.only(left: 75, right: 50),
+                  margin: EdgeInsets.only(left: 75, right: 50, top: 20),
                   child: Column(
                     children: <Widget>[
                       Row(
@@ -213,7 +213,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               alignment: Alignment.centerLeft,
                               child: Container(
                                 child: Text(
-                                  "性别：$_gender",
+                                  "性别: " +_gender,
                                   textAlign: TextAlign.right,
                                   style: fontStyle(),
                                 ),
@@ -246,7 +246,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     context,
                                     CupertinoPageRoute(
                                         builder: (context) => SignUpPage(
-                                              title: 'Edit Information',
+                                              title: '编辑信息',
                                               recommendationActivity:
                                                   widget.recommendationAct,
                                               foodRecommendation:
@@ -255,7 +255,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   );
                                 },
                                 child: Text(
-                                  "Edit",
+                                  "编辑信息",
                                   style: fontStyle(),
                                 ),
                               ),

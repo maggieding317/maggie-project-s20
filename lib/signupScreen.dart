@@ -205,7 +205,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: RadioListTile(
                               groupValue: _gender,
                               title: Text('女'),
-                              value: 'female',
+                              value: '女',
                               onChanged: (val) {
                                 setState(() {
                                   _gender = val;
@@ -217,7 +217,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: RadioListTile(
                               groupValue: _gender,
                               title: Text('男'),
-                              value: 'male',
+                              value: '男',
                               onChanged: (val) {
                                 setState(() {
                                   _gender = val;

@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => SignUpPage(title: 'Sign Up',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
+                    builder: (context) => SignUpPage(title: '注册',recommendationActivity: recommendation_activity,foodRecommendation: food_recommendation,)),
               );
             }
           });
