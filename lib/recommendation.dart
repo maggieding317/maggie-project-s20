@@ -11,7 +11,7 @@ class Recommendation {
   var recommendation_options = {};
 
   Recommendation(){
-    http.get('https://marisabelc.github.io/baby_food/recommendation_food.json').then((res) {
+    http.get('https://maggieding317.github.io/food//recommendation_food.json').then((res) {
       print('======get food ======');
       var resObj = jsonDecode(res.body);
       food_map =resObj['food'];

@@ -70,28 +70,30 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
                       return Container(
                         height: 50,
                         child: Center(
-                          child: Row(children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                child: Image.network(widget.recommendation
-                                    .food_map[breakfastList[index]]['image']),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                margin: EdgeInsets.only(right: 30),
-                                child: Text(
-                                  widget.recommendation
-                                      .food_map[breakfastList[index]]['name'],
-                                  textAlign: TextAlign.left,
+                          child: FlatButton(
+                            child: Row(children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  child: Image.network(widget.recommendation
+                                      .food_map[breakfastList[index]]['image']),
                                 ),
                               ),
-                            ),
-                          ]),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 30),
+                                  child: Text(
+                                    widget.recommendation
+                                        .food_map[breakfastList[index]]['name'],
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          ),
                         ),
                       );
                     }),
@@ -118,28 +120,31 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
                       return Container(
                         height: 50,
                         child: Center(
-                          child: Row(children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                child: Image.network(widget.recommendation
-                                    .food_map[lunchList[index]]['image']),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                margin: EdgeInsets.only(right: 30),
-                                child: Text(
-                                  widget.recommendation
-                                      .food_map[lunchList[index]]['name'],
-                                  textAlign: TextAlign.left,
+                          child: FlatButton(
+                            child: Row(
+                                children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  child: Image.network(widget.recommendation
+                                      .food_map[lunchList[index]]['image']),
                                 ),
                               ),
-                            ),
-                          ]),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 30),
+                                  child: Text(
+                                    widget.recommendation
+                                        .food_map[lunchList[index]]['name'],
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          ),
                         ),
                       );
                     }),
@@ -166,28 +171,31 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
                       return Container(
                         height: 50,
                         child: Center(
-                          child: Row(children: <Widget>[
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                height: 80,
-                                width: 80,
-                                child: Image.network(widget.recommendation
-                                    .food_map[dinnerList[index]]['image']),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                margin: EdgeInsets.only(right: 30),
-                                child: Text(
-                                  widget.recommendation
-                                      .food_map[dinnerList[index]]['name'],
-                                  textAlign: TextAlign.left,
+                          child: FlatButton(
+                            child: Row(
+                                children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  height: 80,
+                                  width: 80,
+                                  child: Image.network(widget.recommendation
+                                      .food_map[dinnerList[index]]['image']),
                                 ),
                               ),
-                            ),
-                          ]),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  margin: EdgeInsets.only(right: 30),
+                                  child: Text(
+                                    widget.recommendation
+                                        .food_map[dinnerList[index]]['name'],
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          ),
                         ),
                       );
                     }),
