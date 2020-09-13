@@ -11,11 +11,13 @@ class Recommendation {
   var recommendation_options = {};
 
   Recommendation(){
-    http.get('https://maggieding317.github.io/food//recommendation_food.json').then((res) {
+    http.get('https://maggieding317.github.io/food/recommendation_food.json').then((res) {
       print('======get food ======');
       var resObj = jsonDecode(res.body);
       food_map =resObj['food'];
+//      print(resObj);
       recommendation_options= resObj['options'];
+//      print(recommendation_options);
     }).catchError((e){
       print('failed to get response');
     });

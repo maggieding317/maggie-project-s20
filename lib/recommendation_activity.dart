@@ -23,7 +23,7 @@ class RecommendationActivity {
   var recommendation_options;
 
   RecommendationActivity(){
-    http.get('https://maggieding317.github.io/food//recommendation_activity.json').then((res) {
+    http.get('https://maggieding317.github.io/food/recommendation_activity.json').then((res) {
 //      print('======get======');
       var resObj = jsonDecode(res.body);
       activity_map =resObj['activity'];
