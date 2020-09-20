@@ -18,10 +18,10 @@ class _RecommendedActivityPageState extends State<RecommendedActivityPage> {
     widget.recommendation.get_recommended_activities().then((rec_map) {
       setState(() {
         activityList = rec_map;
-        print(activityList);
+        //print(activityList);
       });
     }).catchError((e) {
-      print("Failed to load the data." + e.toString());
+      //print("Failed to load the data." + e.toString());
     });
   }
 
@@ -52,7 +52,7 @@ class _RecommendedActivityPageState extends State<RecommendedActivityPage> {
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
                       onTap: () {
-                        print("clicked!");
+                        //print("clicked!");
                         Navigator.push(
                           context,
                           MaterialPageRoute(

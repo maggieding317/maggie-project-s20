@@ -26,10 +26,10 @@ class _SchedulePageState extends State<SchedulePage> {
     recommendation.get_recommended_schedul().then((rec_map) {
       setState(() {
         activityList = rec_map;
-        print(activityList);
+        //print(activityList);
       });
     }).catchError((e) {
-      print("Failed to load the data." + e.toString());
+      //print("Failed to load the data." + e.toString());
     });
   }
 
@@ -56,7 +56,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     var height = 70.0;
                     return FlatButton(
                       onPressed: () {
-                        print("clicked!");
+                        //print("clicked!");
                         Navigator.push(
                           context,
                           MaterialPageRoute(

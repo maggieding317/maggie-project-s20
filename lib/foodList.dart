@@ -124,7 +124,7 @@ class _FoodListState extends State<FoodList> {
                    itemBuilder: (BuildContext context, int index) {
                      return ListTile(
                        onTap: (){
-                         print("clicked!");
+                         //print("clicked!");
                          Navigator.pop(context,foodList[index]);
                        },
                          title:Container(

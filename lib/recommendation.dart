@@ -12,12 +12,12 @@ class Recommendation {
 
   Recommendation(){
     http.get('https://maggieding317.github.io/food/recommendation_food.json').then((res) {
-      print('======get food ======');
+      //print('======get food ======');
       var resObj = jsonDecode(res.body);
       food_map =resObj['food'];
 //      print(resObj);
       recommendation_options= resObj['options'];
-//      print(recommendation_options);
+//      //print(recommendation_options);
     }).catchError((e){
       print('failed to get response');
     });
@@ -28,7 +28,7 @@ class Recommendation {
     food_map.forEach((k, v) {
       foodList.add(v);
     });
-    print(foodList);
+    //print(foodList);
     return foodList;
   }
 
@@ -42,17 +42,17 @@ class Recommendation {
   Future<void> _loadProfileInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     id = prefs.getString("ID");
-    print(id);
+    //print(id);
     weight = double.parse(prefs.getString("weight"));
-    print(weight);
+    //print(weight);
     height = double.parse(prefs.getString("height"));
-    print(height);
+    //print(height);
     head = double.parse(prefs.getString("head"));
-    print(head);
+    //print(head);
     gender = prefs.getString("gender");
-    print(gender);
+    //print(gender);
     age = int.parse(prefs.getString("age"));
-    print(age);
+    //print(age);
   }
 
   Future<Map> get_recommended_food() async {

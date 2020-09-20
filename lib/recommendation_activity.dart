@@ -29,7 +29,7 @@ class RecommendationActivity {
       activity_map =resObj['activity'];
       recommendation_options= resObj['option'];
     }).catchError((e){
-      print('failed to get response');
+//      print('failed to get response');
     });
   }
 
@@ -61,7 +61,7 @@ class RecommendationActivity {
     activity_map.forEach((k, v) {
       itemList.add(v);
     });
-    print(itemList);
+//    print(itemList);
     return itemList;
   }
 
@@ -75,23 +75,23 @@ class RecommendationActivity {
   Future<void> _loadProfileInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     id = prefs.getString("ID");
-    print(id);
+    //print(id);
     weight = double.parse(prefs.getString("weight"));
-    print(weight);
+    //print(weight);
     height = double.parse(prefs.getString("height"));
-    print(height);
+    //print(height);
     head = double.parse(prefs.getString("head"));
-    print(head);
+    //print(head);
     gender = prefs.getString("gender");
-    print(gender);
+    //print(gender);
     age = int.parse(prefs.getString("age"));
-    print(age);
+    //print(age);
   }
 
   Future<List> get_recommended_activities() async {
-    print('reco');
+    //print('reco');
     await _loadProfileInfo();
-    print(gender);
+    //print(gender);
     if (weight < 30 && age > 1) {
       return Future.value(recommendation_options[gender]['normal']);
     } else if (weight > 35 && height < 24 && age > 2) {
@@ -101,7 +101,7 @@ class RecommendationActivity {
     } else if (weight < 35 && height < 20 && age > 1) {
       return Future.value(recommendation_options[gender]['normal']);
     } else {
-      print(recommendation_options[gender]['normal']);
+      //print(recommendation_options[gender]['normal']);
       return Future.value(recommendation_options[gender]['normal']);
     }
   }

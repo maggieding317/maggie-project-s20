@@ -56,7 +56,7 @@ class RecommendataionSchedule {
     RecommendationActivity recommendationActivity = RecommendationActivity();
     RecommendataionSchedule recSchedule = RecommendataionSchedule(recommendationActivity);
     recSchedule.get_recommended_schedul().then((schedule) {
-      print("recommended schedule is: " + schedule.toString());
+      //print("recommended schedule is: " + schedule.toString());
     });
   }
 
