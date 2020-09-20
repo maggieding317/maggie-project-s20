@@ -12,7 +12,7 @@ class FoodDetailPage extends StatefulWidget {
 }
 
 class _FoodDetailPageState extends State<FoodDetailPage> {
-  var food_details = ["value", "protein", "fat", "Carbohydrates"];
+  var food_details = ["calories", "protein", "fat", "Carbohydrates"];
 
 
   @override

@@ -23,6 +23,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
 
   var dinnerList = [];
 
+  var calories = 0.0;
   _navigateAndDisplaySelection(BuildContext context, String meal) async {
     // Navigator.push returns a Future that completes after calling
     // Navigator.pop on the Selection Screen.
@@ -50,6 +51,9 @@ class _yourFoodPageState extends State<yourFoodPage> {
         dinnerList.add(result);
         Recommendation.recordFoodToday("dinner", dinnerList);
       }
+
+      print(widget.foodRecommendation.food_map[result]['name']['calories']);
+      calories += double.parse(widget.foodRecommendation.food_map[result]['name']['calories']);
     });
   }
 
@@ -65,15 +69,32 @@ class _yourFoodPageState extends State<yourFoodPage> {
           }
         }
       });
+      calculateCalories(breakfastList);
     });
     Recommendation.loadFoodToday("lunch").then((list) {
       this.lunchList = list;
+      calculateCalories(lunchList);
     });
     Recommendation.loadFoodToday("dinner").then((list) {
       this.dinnerList = list;
+      calculateCalories(dinnerList);
     });
   }
 
+  void calculateCalories(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .foodRecommendation.food_map[list[i]['name']]['calories']);
+    }
+    setState(() {
+      calories += temp;
+    });
+    print('calories' + calories.toString());
+
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +103,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
             color: Color.fromRGBO(255, 243, 231, 100),
             child: Column(
               children: <Widget>[
+                Text("calories: " + calories.toStringAsFixed(2)),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -152,7 +174,8 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                     icon: Icon(Icons.delete),
                                     onPressed: () {
                                       setState(() {
-                                        breakfastList.removeAt(index);
+                                        calories -= double.parse(widget
+                                            .foodRecommendation.food_map[breakfastList[index]['name']]['calories']);breakfastList.removeAt(index);
                                         Recommendation.recordFoodToday(
                                             "breakfast", breakfastList);
                                       });
@@ -234,6 +257,8 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                     icon: Icon(Icons.delete),
                                     onPressed: () {
                                       setState(() {
+                                        calories -= double.parse(widget
+                                            .foodRecommendation.food_map[lunchList[index]['name']]['calories']);
                                         lunchList.removeAt(index);
                                         Recommendation.recordFoodToday(
                                             "lunch", lunchList);
@@ -316,6 +341,8 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                     icon: Icon(Icons.delete),
                                     onPressed: () {
                                       setState(() {
+                                        calories -= double.parse(widget
+                                            .foodRecommendation.food_map[dinnerList[index]['name']]['calories']);
                                         dinnerList.removeAt(index);
                                         Recommendation.recordFoodToday(
                                             "dinner", dinnerList);
