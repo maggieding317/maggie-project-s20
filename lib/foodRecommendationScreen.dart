@@ -21,6 +21,8 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
 
   var dinnerList = [];
 
+  double calories= 0.0;
+
   @override
   void initState() {
     super.initState();
@@ -30,9 +32,25 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
         lunchList = rec_map['lunch'];
         dinnerList = rec_map['dinner'];
       });
+      calculateCalories(breakfastList);
+      calculateCalories(lunchList);
+      calculateCalories(dinnerList);
     }).catchError((e) {
       print("Failed to load the data." + e.toString());
     });
+  }
+
+  void calculateCalories(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .recommendation.food_map[list[i]]['calories']);
+    }
+    setState(() {
+      calories += temp;
+    });
+    print('calories' + calories.toString());
   }
 
   @override
@@ -48,6 +66,8 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
           color: Color.fromRGBO(255, 243, 231, 100),
           child: Column(
             children: <Widget>[
+              SizedBox(height: 8.0),
+              Text('Total Calories: ' + calories.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
               Row(
                 children: <Widget>[
                   Expanded(

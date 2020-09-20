@@ -37,7 +37,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
             foodRecommendation: widget.foodRecommendation,
           )),
     );
-    print(result);
+    //print('result: ' + result.toString());
     setState(() {
       if (meal == "breakfast") {
         breakfastList.add(result);
@@ -52,8 +52,8 @@ class _yourFoodPageState extends State<yourFoodPage> {
         Recommendation.recordFoodToday("dinner", dinnerList);
       }
 
-      print(widget.foodRecommendation.food_map[result]['name']['calories']);
-      calories += double.parse(widget.foodRecommendation.food_map[result]['name']['calories']);
+      //print(widget.foodRecommendation.food_map[result['name']]['calories']);
+      calories += double.parse(widget.foodRecommendation.food_map[result['name']]['calories']);
     });
   }
 
@@ -65,7 +65,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
         for (var item in list) {
           if (item != null) {
             breakfastList.add(item);
-            print(list);
+            //print(list);
           }
         }
       });
@@ -91,7 +91,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
     setState(() {
       calories += temp;
     });
-    print('calories' + calories.toString());
+    //print('calories' + calories.toString());
 
 
   }
@@ -103,7 +103,8 @@ class _yourFoodPageState extends State<yourFoodPage> {
             color: Color.fromRGBO(255, 243, 231, 100),
             child: Column(
               children: <Widget>[
-                Text("calories: " + calories.toStringAsFixed(2)),
+                SizedBox(height: 8.0),
+                Text("Total Calories: " + calories.toStringAsFixed(2), style: TextStyle(fontSize: 20)),
                 Row(
                   children: <Widget>[
                     Expanded(
