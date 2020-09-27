@@ -24,6 +24,13 @@ class _yourFoodPageState extends State<yourFoodPage> {
   var dinnerList = [];
 
   var calories = 0.0;
+
+  var protein = 0.0;
+
+  var fat = 0.0;
+
+  var carbohydrate = 0.0;
+
   _navigateAndDisplaySelection(BuildContext context, String meal) async {
     // Navigator.push returns a Future that completes after calling
     // Navigator.pop on the Selection Screen.
@@ -37,24 +44,30 @@ class _yourFoodPageState extends State<yourFoodPage> {
             foodRecommendation: widget.foodRecommendation,
           )),
     );
-    //print('result: ' + result.toString());
-    setState(() {
-      if (meal == "breakfast") {
-        breakfastList.add(result);
-        Recommendation.recordFoodToday("breakfast", breakfastList);
-      }
-      if (meal == "lunch") {
-        lunchList.add(result);
-        Recommendation.recordFoodToday("lunch", lunchList);
-      }
-      if (meal == "dinner") {
-        dinnerList.add(result);
-        Recommendation.recordFoodToday("dinner", dinnerList);
-      }
+    if (result != null){
+      //print('result: ' + result.toString());
+      setState(() {
+        if (meal == "breakfast") {
+          breakfastList.add(result);
+          Recommendation.recordFoodToday("breakfast", breakfastList);
+        }
+        if (meal == "lunch") {
+          lunchList.add(result);
+          Recommendation.recordFoodToday("lunch", lunchList);
+        }
+        if (meal == "dinner") {
+          dinnerList.add(result);
+          Recommendation.recordFoodToday("dinner", dinnerList);
+        }
 
-      //print(widget.foodRecommendation.food_map[result['name']]['calories']);
-      calories += double.parse(widget.foodRecommendation.food_map[result['name']]['calories']);
-    });
+        //print(widget.foodRecommendation.food_map[result['name']]['calories']);
+        calories += double.parse(widget.foodRecommendation.food_map[result['name']]['calories']);
+        protein += double.parse(widget.foodRecommendation.food_map[result['name']]['protein']);
+        fat += double.parse(widget.foodRecommendation.food_map[result['name']]['fat']);
+        carbohydrate += double.parse(widget.foodRecommendation.food_map[result['name']]['carbohydrates']);
+      });
+    }
+
   }
 
   @override
@@ -70,14 +83,23 @@ class _yourFoodPageState extends State<yourFoodPage> {
         }
       });
       calculateCalories(breakfastList);
+      calculateProtein(breakfastList);
+      calculateFat(breakfastList);
+      calculateCarbohydrate(breakfastList);
     });
     Recommendation.loadFoodToday("lunch").then((list) {
       this.lunchList = list;
       calculateCalories(lunchList);
+      calculateProtein(lunchList);
+      calculateFat(lunchList);
+      calculateCarbohydrate(lunchList);
     });
     Recommendation.loadFoodToday("dinner").then((list) {
       this.dinnerList = list;
       calculateCalories(dinnerList);
+      calculateProtein(dinnerList);
+      calculateFat(dinnerList);
+      calculateCarbohydrate(dinnerList);
     });
   }
 
@@ -95,6 +117,46 @@ class _yourFoodPageState extends State<yourFoodPage> {
 
 
   }
+
+  void calculateProtein(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .foodRecommendation.food_map[list[i]['name']]['protein']);
+    }
+    setState(() {
+      protein += temp;
+    });
+    //print('calories' + calories.toString());
+  }
+
+  void calculateFat(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .foodRecommendation.food_map[list[i]['name']]['fat']);
+    }
+    setState(() {
+      fat += temp;
+    });
+    //print('calories' + calories.toString());
+  }
+
+  void calculateCarbohydrate(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .foodRecommendation.food_map[list[i]['name']]['carbohydrates']);
+    }
+    setState(() {
+      carbohydrate += temp;
+    });
+    print('carbohydrate' + temp.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +166,25 @@ class _yourFoodPageState extends State<yourFoodPage> {
             child: Column(
               children: <Widget>[
                 SizedBox(height: 8.0),
-                Text("Total Calories: " + calories.toStringAsFixed(2), style: TextStyle(fontSize: 20)),
+                calories >0 ?
+                Text("Total Calories: " + calories.toStringAsFixed(2),
+                    style: TextStyle(fontSize: 20)): Text("Total Calories: 0.0" ,
+                    style: TextStyle(fontSize: 20)),
+                SizedBox(height: 8.0),
+                protein >0 ?
+                Text("Total Protein: " + protein.toStringAsFixed(2),
+                    style: TextStyle(fontSize: 20)): Text("Total Protein: 0.0" ,
+                    style: TextStyle(fontSize: 20)),
+                SizedBox(height: 8.0),
+                fat >0 ?
+                Text("Total Fat: " + fat.toStringAsFixed(2),
+                    style: TextStyle(fontSize: 20)): Text("Total Fat: 0.0" ,
+                    style: TextStyle(fontSize: 20)),
+                SizedBox(height: 8.0),
+                carbohydrate >0 ?
+                Text("Total Carbohydrate: " + carbohydrate.toStringAsFixed(2),
+                    style: TextStyle(fontSize: 20)): Text("Total Carbohydrate: 0.0" ,
+                    style: TextStyle(fontSize: 20)),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -176,7 +256,16 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                     onPressed: () {
                                       setState(() {
                                         calories -= double.parse(widget
-                                            .foodRecommendation.food_map[breakfastList[index]['name']]['calories']);breakfastList.removeAt(index);
+                                            .foodRecommendation.food_map[breakfastList[index]['name']]['calories']);
+
+                                        protein -= double.parse(widget
+                                            .foodRecommendation.food_map[breakfastList[index]['name']]['protein']);
+
+                                        fat -= double.parse(widget
+                                            .foodRecommendation.food_map[breakfastList[index]['name']]['fat']);
+
+                                        carbohydrate -= double.parse(widget
+                                            .foodRecommendation.food_map[breakfastList[index]['name']]['carbohydrates']);breakfastList.removeAt(index);
                                         Recommendation.recordFoodToday(
                                             "breakfast", breakfastList);
                                       });
@@ -260,6 +349,18 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                       setState(() {
                                         calories -= double.parse(widget
                                             .foodRecommendation.food_map[lunchList[index]['name']]['calories']);
+
+
+                                        protein -= double.parse(widget
+                                            .foodRecommendation.food_map[lunchList[index]['name']]['protein']);
+
+
+                                        fat -= double.parse(widget
+                                            .foodRecommendation.food_map[lunchList[index]['name']]['fat']);
+
+
+                                        carbohydrate -= double.parse(widget
+                                            .foodRecommendation.food_map[lunchList[index]['name']]['carbohydrates']);
                                         lunchList.removeAt(index);
                                         Recommendation.recordFoodToday(
                                             "lunch", lunchList);
@@ -344,6 +445,18 @@ class _yourFoodPageState extends State<yourFoodPage> {
                                       setState(() {
                                         calories -= double.parse(widget
                                             .foodRecommendation.food_map[dinnerList[index]['name']]['calories']);
+
+
+                                        protein -= double.parse(widget
+                                            .foodRecommendation.food_map[dinnerList[index]['name']]['protein']);
+
+
+                                        fat -= double.parse(widget
+                                            .foodRecommendation.food_map[dinnerList[index]['name']]['fat']);
+
+
+                                        carbohydrate -= double.parse(widget
+                                            .foodRecommendation.food_map[dinnerList[index]['name']]['carbohydrates']);
                                         dinnerList.removeAt(index);
                                         Recommendation.recordFoodToday(
                                             "dinner", dinnerList);

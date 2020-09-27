@@ -23,6 +23,13 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
 
   double calories= 0.0;
 
+  double protein= 0.0;
+
+  double fat= 0.0;
+
+  double carbohydrate= 0.0;
+
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +42,19 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
       calculateCalories(breakfastList);
       calculateCalories(lunchList);
       calculateCalories(dinnerList);
+
+      calculateProtein(breakfastList);
+      calculateProtein(lunchList);
+      calculateProtein(dinnerList);
+
+      calculateFat(breakfastList);
+      calculateFat(lunchList);
+      calculateFat(dinnerList);
+
+      calculateCarbohydrate(breakfastList);
+      calculateCarbohydrate(lunchList);
+      calculateCarbohydrate(dinnerList);
+
     }).catchError((e) {
       print("Failed to load the data." + e.toString());
     });
@@ -53,6 +73,45 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
     print('calories' + calories.toString());
   }
 
+  void calculateProtein(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .recommendation.food_map[list[i]]['protein']);
+    }
+    setState(() {
+      protein += temp;
+    });
+    //print('calories' + calories.toString());
+  }
+
+  void calculateFat(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .recommendation.food_map[list[i]]['fat']);
+    }
+    setState(() {
+      fat += temp;
+    });
+    //print('calories' + calories.toString());
+  }
+
+  void calculateCarbohydrate(list) {
+
+    var temp = 0.0;
+    for (int i = 0; i < list.length; i++) {
+      temp += double.parse(widget
+          .recommendation.food_map[list[i]]['carbohydrates']);
+    }
+    setState(() {
+      carbohydrate += temp;
+    });
+    print('carbohydrate' + temp.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,6 +127,12 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
             children: <Widget>[
               SizedBox(height: 8.0),
               Text('Total Calories: ' + calories.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              SizedBox(height: 8.0),
+              Text('Total Protein: ' + protein.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              SizedBox(height: 8.0),
+              Text('Total Fat: ' + fat.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              SizedBox(height: 8.0),
+              Text('Total Carbohydrate: ' + carbohydrate.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
               Row(
                 children: <Widget>[
                   Expanded(
