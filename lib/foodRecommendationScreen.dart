@@ -21,14 +21,13 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
 
   var dinnerList = [];
 
-  double calories= 0.0;
+  double calories = 0.0;
 
-  double protein= 0.0;
+  double protein = 0.0;
 
-  double fat= 0.0;
+  double fat = 0.0;
 
-  double carbohydrate= 0.0;
-
+  double carbohydrate = 0.0;
 
   @override
   void initState() {
@@ -39,33 +38,25 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
         lunchList = rec_map['lunch'];
         dinnerList = rec_map['dinner'];
       });
-      calculateCalories(breakfastList);
-      calculateCalories(lunchList);
-      calculateCalories(dinnerList);
-
-      calculateProtein(breakfastList);
-      calculateProtein(lunchList);
-      calculateProtein(dinnerList);
-
-      calculateFat(breakfastList);
-      calculateFat(lunchList);
-      calculateFat(dinnerList);
-
-      calculateCarbohydrate(breakfastList);
-      calculateCarbohydrate(lunchList);
-      calculateCarbohydrate(dinnerList);
-
+      calculateNutrition(breakfastList);
+      calculateNutrition(lunchList);
+      calculateNutrition(dinnerList);
     }).catchError((e) {
       print("Failed to load the data." + e.toString());
     });
   }
 
-  void calculateCalories(list) {
+  void calculateNutrition(list) {
+    calculateCalories(list);
+    calculateProtein(list);
+    calculateFat(list);
+    calculateCarbohydrate(list);
+  }
 
+  void calculateCalories(list) {
     var temp = 0.0;
     for (int i = 0; i < list.length; i++) {
-      temp += double.parse(widget
-          .recommendation.food_map[list[i]]['calories']);
+      temp += double.parse(widget.recommendation.food_map[list[i]]['calories']);
     }
     setState(() {
       calories += temp;
@@ -74,11 +65,9 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
   }
 
   void calculateProtein(list) {
-
     var temp = 0.0;
     for (int i = 0; i < list.length; i++) {
-      temp += double.parse(widget
-          .recommendation.food_map[list[i]]['protein']);
+      temp += double.parse(widget.recommendation.food_map[list[i]]['protein']);
     }
     setState(() {
       protein += temp;
@@ -87,11 +76,9 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
   }
 
   void calculateFat(list) {
-
     var temp = 0.0;
     for (int i = 0; i < list.length; i++) {
-      temp += double.parse(widget
-          .recommendation.food_map[list[i]]['fat']);
+      temp += double.parse(widget.recommendation.food_map[list[i]]['fat']);
     }
     setState(() {
       fat += temp;
@@ -100,11 +87,10 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
   }
 
   void calculateCarbohydrate(list) {
-
     var temp = 0.0;
     for (int i = 0; i < list.length; i++) {
-      temp += double.parse(widget
-          .recommendation.food_map[list[i]]['carbohydrates']);
+      temp += double.parse(
+          widget.recommendation.food_map[list[i]]['carbohydrates']);
     }
     setState(() {
       carbohydrate += temp;
@@ -126,13 +112,25 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
           child: Column(
             children: <Widget>[
               SizedBox(height: 8.0),
-              Text('Total Calories: ' + calories.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              Text(
+                'Total Calories: ' + calories.toStringAsFixed(2),
+                style: TextStyle(fontSize: 20),
+              ),
               SizedBox(height: 8.0),
-              Text('Total Protein: ' + protein.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              Text(
+                'Total Protein: ' + protein.toStringAsFixed(2),
+                style: TextStyle(fontSize: 20),
+              ),
               SizedBox(height: 8.0),
-              Text('Total Fat: ' + fat.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              Text(
+                'Total Fat: ' + fat.toStringAsFixed(2),
+                style: TextStyle(fontSize: 20),
+              ),
               SizedBox(height: 8.0),
-              Text('Total Carbohydrate: ' + carbohydrate.toStringAsFixed(2), style: TextStyle(fontSize: 20),),
+              Text(
+                'Total Carbohydrate: ' + carbohydrate.toStringAsFixed(2),
+                style: TextStyle(fontSize: 20),
+              ),
               Row(
                 children: <Widget>[
                   Expanded(
