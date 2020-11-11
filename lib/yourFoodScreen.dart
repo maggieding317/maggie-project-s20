@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'foodList.dart';
 import 'foodRecommendationScreen.dart';
 import 'food_detail.dart';
@@ -30,6 +31,137 @@ class _yourFoodPageState extends State<yourFoodPage> {
   var fat = 0.0;
 
   var carbohydrate = 0.0;
+
+  var dailycalories = 0.0;
+
+  var dailyprotein = 0.0;
+
+  var dailyfat = 0.0;
+
+  var dailycarbohydrate = 0.0;
+
+  var caloriesRate = '';
+
+  var proteinRate = '';
+
+  var fatRate = '';
+
+  var carbohydrateRate = '';
+
+  var healthRate;
+
+  var _gender;
+
+  var _age;
+
+  loadProfileInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String gender = await prefs.get("gender");
+    setState(() {
+      _gender = gender;
+    });
+    String age = await prefs.get("age");
+    setState(() {
+      _age = age;
+      dailyData();
+    });
+
+  }
+
+  dailyData(){
+    setState(() {
+      if (_age <= 3){
+        dailyprotein = 13.0;
+        dailycarbohydrate = 130.0;
+        dailycalories = 1000.0;
+        dailyfat = 3.0;
+      }else if (_age <= 8){
+        if(_gender == '女'){
+          dailyprotein = 19;
+          dailycarbohydrate = 130;
+          dailycalories = 1000;
+          dailyfat = 3;
+        }else{
+          dailyprotein = 19;
+          dailycarbohydrate = 130;
+          dailycalories = 1000;
+          dailyfat = 3;
+        }
+      }else if (_age <= 13){
+        if(_gender == '女'){
+          dailyprotein = 19;
+          dailycarbohydrate = 130;
+          dailycalories = 1000;
+          dailyfat = 3;
+        }else {
+          dailyprotein = 19;
+          dailycarbohydrate = 130;
+          dailycalories = 1000;
+          dailyfat = 3;
+        }}else if (_age <= 18){
+        if(_gender == '女'){
+          dailyprotein = 19;
+          dailycarbohydrate = 130;
+          dailycalories = 1000;
+          dailyfat = 3;
+        }else{
+          dailyprotein = 19;
+          dailycarbohydrate = 130;
+          dailycalories = 1000;
+          dailyfat = 3;
+        }
+      }
+    });
+    getRate();
+    }
+
+    getRate(){
+      var count = 0;
+      setState(() {
+        proteinRate = '';
+        caloriesRate = '';
+        fatRate = '';
+        carbohydrateRate = '';
+        if(dailyprotein < protein){
+          proteinRate = ' ↓';
+          count += 1;
+        }else if(dailyprotein > protein){
+          proteinRate = ' ↑';
+          count += 1;
+        }
+        if(dailycalories < calories){
+          caloriesRate = ' ↓';
+          count += 1;
+        }else if(dailycalories > calories){
+          caloriesRate = ' ↑';
+          count += 1;
+        }
+        if(dailyfat < fat){
+          fatRate = ' ↓';
+          count += 1;
+        }else if(dailyfat > fat){
+          fatRate = ' ↑';
+          count += 1;
+        }
+        if(dailycarbohydrate < carbohydrate){
+          carbohydrateRate = ' ↓';
+          count += 1;
+        }else if(dailycarbohydrate > carbohydrate){
+          carbohydrateRate = ' ↑';
+          count += 1;
+        }
+      });
+      setState(() {
+        if (count >= 3){
+          healthRate = 'Bad';
+        }else if (count == 2){
+          healthRate = 'Average';
+        }else{
+          healthRate = 'Good';
+        }
+      });
+    }
+
 
   _navigateAndDisplaySelection(BuildContext context, String meal) async {
     // Navigator.push returns a Future that completes after calling
@@ -70,12 +202,15 @@ class _yourFoodPageState extends State<yourFoodPage> {
         carbohydrate += double.parse(widget
             .foodRecommendation.food_map[result['name']]['carbohydrates']);
       });
+      getRate();
     }
   }
 
   @override
   void initState() {
     super.initState();
+    loadProfileInfo();
+
     Recommendation.loadFoodToday("breakfast").then((list) {
       setState(() {
         for (var item in list) {
@@ -95,6 +230,7 @@ class _yourFoodPageState extends State<yourFoodPage> {
       this.dinnerList = list;
       calculateNutrition(dinnerList);
     });
+    getRate();
   }
 
   void calculateNutrition(list) {
@@ -162,25 +298,30 @@ class _yourFoodPageState extends State<yourFoodPage> {
           children: <Widget>[
             SizedBox(height: 8.0),
             calories > 0
-                ? Text("Total Calories: " + calories.toStringAsFixed(2),
+                ? Text("Total Calories: " + calories.toStringAsFixed(2) + caloriesRate,
                     style: TextStyle(fontSize: 20))
                 : Text("Total Calories: 0.0", style: TextStyle(fontSize: 20)),
             SizedBox(height: 8.0),
             protein > 0
-                ? Text("Total Protein: " + protein.toStringAsFixed(2),
+                ? Text("Total Protein: " + protein.toStringAsFixed(2) + proteinRate,
                     style: TextStyle(fontSize: 20))
                 : Text("Total Protein: 0.0", style: TextStyle(fontSize: 20)),
             SizedBox(height: 8.0),
             fat > 0
-                ? Text("Total Fat: " + fat.toStringAsFixed(2),
+                ? Text("Total Fat: " + fat.toStringAsFixed(2) + fatRate,
                     style: TextStyle(fontSize: 20))
                 : Text("Total Fat: 0.0", style: TextStyle(fontSize: 20)),
             SizedBox(height: 8.0),
             carbohydrate > 0
-                ? Text("Total Carbohydrate: " + carbohydrate.toStringAsFixed(2),
+                ? Text("Total Carbohydrate: " + carbohydrate.toStringAsFixed(2) + carbohydrateRate,
                     style: TextStyle(fontSize: 20))
                 : Text("Total Carbohydrate: 0.0",
                     style: TextStyle(fontSize: 20)),
+            SizedBox(height: 8.0),
+            calories > 0
+                ? Text("Health Rate: " + healthRate,
+                  style: TextStyle(fontSize: 20))
+                : Text(''),
             Row(
               children: <Widget>[
                 Expanded(
@@ -432,5 +573,6 @@ class _yourFoodPageState extends State<yourFoodPage> {
       list.removeAt(index);
       Recommendation.recordFoodToday(foodTime, list);
     });
+    getRate();
   }
 }
