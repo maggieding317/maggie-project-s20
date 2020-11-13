@@ -74,41 +74,41 @@ class _yourFoodPageState extends State<yourFoodPage> {
         dailyprotein = 13.0;
         dailycarbohydrate = 130.0;
         dailycalories = 1000.0;
-        dailyfat = 3.0;
+        dailyfat = 38.8;
       }else if (_age <= 8){
         if(_gender == '女'){
-          dailyprotein = 19;
-          dailycarbohydrate = 130;
-          dailycalories = 1000;
-          dailyfat = 3;
+          dailyprotein = 19.0;
+          dailycarbohydrate = 130.0;
+          dailycalories = 1200.0;
+          dailyfat = 40.0;
         }else{
-          dailyprotein = 19;
-          dailycarbohydrate = 130;
-          dailycalories = 1000;
-          dailyfat = 3;
+          dailyprotein = 19.0;
+          dailycarbohydrate = 130.0;
+          dailycalories = 1500.0;
+          dailyfat = 50.0;
         }
       }else if (_age <= 13){
         if(_gender == '女'){
-          dailyprotein = 19;
-          dailycarbohydrate = 130;
-          dailycalories = 1000;
-          dailyfat = 3;
+          dailyprotein = 34.0;
+          dailycarbohydrate = 130.0;
+          dailycalories = 1600.0;
+          dailyfat = 53.3;
         }else {
-          dailyprotein = 19;
-          dailycarbohydrate = 130;
-          dailycalories = 1000;
-          dailyfat = 3;
+          dailyprotein = 34.0;
+          dailycarbohydrate = 130.0;
+          dailycalories = 1800.0;
+          dailyfat = 60.0;
         }}else if (_age <= 18){
         if(_gender == '女'){
-          dailyprotein = 19;
-          dailycarbohydrate = 130;
-          dailycalories = 1000;
-          dailyfat = 3;
+          dailyprotein = 46.0;
+          dailycarbohydrate = 130.0;
+          dailycalories = 1800.0;
+          dailyfat = 60.0;
         }else{
-          dailyprotein = 19;
-          dailycarbohydrate = 130;
-          dailycalories = 1000;
-          dailyfat = 3;
+          dailyprotein = 52.0;
+          dailycarbohydrate = 130.0;
+          dailycalories = 2800.0;
+          dailyfat = 93.3;
         }
       }
     });
@@ -122,38 +122,38 @@ class _yourFoodPageState extends State<yourFoodPage> {
         caloriesRate = '';
         fatRate = '';
         carbohydrateRate = '';
-        if(dailyprotein < protein){
+        if(dailyprotein < protein - 10){
           proteinRate = ' ↓';
           count += 1;
-        }else if(dailyprotein > protein){
+        }else if(dailyprotein > protein + 10){
           proteinRate = ' ↑';
           count += 1;
         }
-        if(dailycalories < calories){
+        if(dailycalories < calories - 100){
           caloriesRate = ' ↓';
           count += 1;
-        }else if(dailycalories > calories){
+        }else if(dailycalories > calories + 100){
           caloriesRate = ' ↑';
           count += 1;
         }
-        if(dailyfat < fat){
+        if(dailyfat < fat - 10){
           fatRate = ' ↓';
           count += 1;
-        }else if(dailyfat > fat){
+        }else if(dailyfat > fat + 10){
           fatRate = ' ↑';
           count += 1;
         }
-        if(dailycarbohydrate < carbohydrate){
+        if(dailycarbohydrate < carbohydrate - 10){
           carbohydrateRate = ' ↓';
           count += 1;
-        }else if(dailycarbohydrate > carbohydrate){
+        }else if(dailycarbohydrate > carbohydrate + 10){
           carbohydrateRate = ' ↑';
           count += 1;
         }
       });
       setState(() {
         if (count >= 3){
-          healthRate = 'Bad';
+          healthRate = 'Below Average';
         }else if (count == 2){
           healthRate = 'Average';
         }else{

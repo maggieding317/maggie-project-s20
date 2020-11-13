@@ -70,16 +70,195 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   getHealthRating() {
-    if (_gender == '女') {
-      if (int.parse(_head) <= 2 &&
-          int.parse(_height) <= 20 &&
-          int.parse(_age) <= 2 &&
-          int.parse(_weight) <= 30) {
-        healthRating = "normal";
-      } else {
-        healthRating = "bad";
+    if (_gender == 'Female') {
+      if (double.parse(_head) <= 2 &&
+          double.parse(_height) <= 20 &&
+          double.parse(_age) <= 2 &&
+          double.parse(_weight) <= 30) {
+        healthRating = 'hum';
       }
-    } else {
+      if (_height <= 106) {
+        if (_weight < 14) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 17) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 108) {
+        if (_weight < 14.4) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 17.6) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 112) {
+        if (_weight < 16) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 19.2) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 116) {
+        if (_weight < 17.4) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 21.1) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 120) {
+        if (_weight < 19) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 23.1) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 124) {
+        if (_weight < 20.9) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 25.4) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 128) {
+        if (_weight < 23) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 28) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 132) {
+        if (_weight < 25) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 30.6) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 136) {
+        if (_weight < 30) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 35.7) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 142) {
+        if (_weight < 32) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 39.1) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 146) {
+        if (_weight < 35.2) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 42.9) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 150) {
+        if (_weight < 38.4) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 46.8) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 154) {
+        if (_weight < 41) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 50.5) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 158) {
+        if (_weight < 44.1) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 54.1) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 162) {
+        if (_weight < 47.2) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 57.5) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 166) {
+        if (_weight < 49.5) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 60.6) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 170) {
+        if (_weight < 52) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 63.5) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 174) {
+        if (_weight < 54) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 66) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 178) {
+        if (_weight < 55.9) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 68.4) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+      else if (_height <= 180) {
+        if (_weight < 56.2) {
+          healthRating = 'UnderWeight';
+        } else if (_weight > 69.4) {
+          healthRating = 'OverWeight';
+        } else {
+          healthRating = 'Normal';
+        }
+      }
+
+    }  else {
       if (_head <= 2 && _height <= 20 && _age <= 2 && _weight <= 30) {
         healthRating = "normal";
       } else {
