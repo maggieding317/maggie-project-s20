@@ -109,44 +109,46 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
       body: Center(
         child: Container(
           color: Color.fromRGBO(255, 243, 231, 100),
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 8.0),
-              Text(
-                'Total Calories: ' + calories.toStringAsFixed(2),
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 8.0),
-              Text(
-                'Total Protein: ' + protein.toStringAsFixed(2),
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 8.0),
-              Text(
-                'Total Fat: ' + fat.toStringAsFixed(2),
-                style: TextStyle(fontSize: 20),
-              ),
-              SizedBox(height: 8.0),
-              Text(
-                'Total Carbohydrate: ' + carbohydrate.toStringAsFixed(2),
-                style: TextStyle(fontSize: 20),
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                      child: Text(
-                        "早餐",
-                        textAlign: TextAlign.left,
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 8.0),
+                Text(
+                  'Total Calories: ' + calories.toStringAsFixed(2),
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'Total Protein: ' + protein.toStringAsFixed(2),
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'Total Fat: ' + fat.toStringAsFixed(2),
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  'Total Carbohydrate: ' + carbohydrate.toStringAsFixed(2),
+                  style: TextStyle(fontSize: 20),
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                        child: Text(
+                          "早餐",
+                          textAlign: TextAlign.left,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
+                  ],
+                ),
+                ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
                     padding: const EdgeInsets.all(8),
                     itemCount: breakfastList.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -190,23 +192,23 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
                         ),
                       );
                     }),
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                      child: Text(
-                        "午餐",
-                        textAlign: TextAlign.left,
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                        child: Text(
+                          "午餐",
+                          textAlign: TextAlign.left,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
+                  ],
+                ),
+                ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
                     padding: const EdgeInsets.all(8),
                     itemCount: lunchList.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -249,23 +251,23 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
                         ),
                       );
                     }),
-              ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
-                      child: Text(
-                        "晚餐",
-                        textAlign: TextAlign.left,
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        margin: EdgeInsets.only(left: 50, top: 30, bottom: 30),
+                        child: Text(
+                          "晚餐",
+                          textAlign: TextAlign.left,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: ListView.builder(
+                  ],
+                ),
+                ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
                     padding: const EdgeInsets.all(8),
                     itemCount: dinnerList.length,
                     itemBuilder: (BuildContext context, int index) {
@@ -308,8 +310,8 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
                         ),
                       );
                     }),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
