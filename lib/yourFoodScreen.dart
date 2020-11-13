@@ -181,27 +181,29 @@ class _yourFoodPageState extends State<yourFoodPage> {
       //print('result: ' + result.toString());
       setState(() {
         if (meal == "breakfast") {
-          breakfastList.add(result);
+          breakfastList.addAll(result);
           Recommendation.recordFoodToday("breakfast", breakfastList);
         }
         if (meal == "lunch") {
-          lunchList.add(result);
+          lunchList.addAll(result);
           Recommendation.recordFoodToday("lunch", lunchList);
         }
         if (meal == "dinner") {
-          dinnerList.add(result);
+          dinnerList.addAll(result);
           Recommendation.recordFoodToday("dinner", dinnerList);
         }
 
         //print(widget.foodRecommendation.food_map[result['name']]['calories']);
-        calories += double.parse(
-            widget.foodRecommendation.food_map[result['name']]['calories']);
-        protein += double.parse(
-            widget.foodRecommendation.food_map[result['name']]['protein']);
-        fat += double.parse(
-            widget.foodRecommendation.food_map[result['name']]['fat']);
-        carbohydrate += double.parse(widget
-            .foodRecommendation.food_map[result['name']]['carbohydrates']);
+        for (var food in result) {
+          calories += double.parse(
+              widget.foodRecommendation.food_map[food['name']]['calories']);
+          protein += double.parse(
+              widget.foodRecommendation.food_map[food['name']]['protein']);
+          fat += double.parse(
+              widget.foodRecommendation.food_map[food['name']]['fat']);
+          carbohydrate += double.parse(widget
+              .foodRecommendation.food_map[food['name']]['carbohydrates']);
+        }
       });
       getRate();
     }
@@ -217,9 +219,10 @@ class _yourFoodPageState extends State<yourFoodPage> {
         for (var item in list) {
           if (item != null) {
             breakfastList.add(item);
-            //print(list);
+
           }
         }
+        print(breakfastList);
       });
       calculateNutrition(breakfastList);
     });
