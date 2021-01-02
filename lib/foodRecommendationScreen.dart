@@ -114,22 +114,22 @@ class _FoodRecommendationPageState extends State<FoodRecommendationPage> {
               children: <Widget>[
                 SizedBox(height: 8.0),
                 Text(
-                  'Total Calories: ' + calories.toStringAsFixed(2),
+                  '卡路里: ' + calories.toStringAsFixed(2),
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  'Total Protein: ' + protein.toStringAsFixed(2),
+                  '蛋白质: ' + protein.toStringAsFixed(2),
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  'Total Fat: ' + fat.toStringAsFixed(2),
+                  '脂肪: ' + fat.toStringAsFixed(2),
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  'Total Carbohydrate: ' + carbohydrate.toStringAsFixed(2),
+                  '碳水化合物: ' + carbohydrate.toStringAsFixed(2),
                   style: TextStyle(fontSize: 20),
                 ),
                 Row(

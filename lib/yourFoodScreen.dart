@@ -154,11 +154,11 @@ class _yourFoodPageState extends State<yourFoodPage> {
       });
       setState(() {
         if (count >= 3){
-          healthRate = 'Below Average';
+          healthRate = '差';
         }else if (count == 2){
-          healthRate = 'Average';
+          healthRate = '良';
         }else{
-          healthRate = 'Good';
+          healthRate = '优';
         }
       });
     }
@@ -303,28 +303,28 @@ class _yourFoodPageState extends State<yourFoodPage> {
               children: <Widget>[
                 SizedBox(height: 8.0),
                 calories > 0
-                    ? Text("Total Calories: " + calories.toStringAsFixed(2) + caloriesRate,
+                    ? Text("卡路里: " + calories.toStringAsFixed(2) + caloriesRate,
                         style: TextStyle(fontSize: 20))
-                    : Text("Total Calories: 0.0", style: TextStyle(fontSize: 20)),
+                    : Text("卡路里: 0.0", style: TextStyle(fontSize: 20)),
                 SizedBox(height: 8.0),
                 protein > 0
-                    ? Text("Total Protein: " + protein.toStringAsFixed(2) + proteinRate,
+                    ? Text("蛋白质: " + protein.toStringAsFixed(2) + proteinRate,
                         style: TextStyle(fontSize: 20))
-                    : Text("Total Protein: 0.0", style: TextStyle(fontSize: 20)),
+                    : Text("蛋白质: 0.0", style: TextStyle(fontSize: 20)),
                 SizedBox(height: 8.0),
                 fat > 0
-                    ? Text("Total Fat: " + fat.toStringAsFixed(2) + fatRate,
+                    ? Text("脂肪: " + fat.toStringAsFixed(2) + fatRate,
                         style: TextStyle(fontSize: 20))
-                    : Text("Total Fat: 0.0", style: TextStyle(fontSize: 20)),
+                    : Text("脂肪: 0.0", style: TextStyle(fontSize: 20)),
                 SizedBox(height: 8.0),
                 carbohydrate > 0
-                    ? Text("Total Carbohydrate: " + carbohydrate.toStringAsFixed(2) + carbohydrateRate,
+                    ? Text("碳水化合物: " + carbohydrate.toStringAsFixed(2) + carbohydrateRate,
                         style: TextStyle(fontSize: 20))
-                    : Text("Total Carbohydrate: 0.0",
+                    : Text("碳水化合物: 0.0",
                         style: TextStyle(fontSize: 20)),
                 SizedBox(height: 8.0),
                 calories > 0
-                    ? Text("Health Rate: " + healthRate,
+                    ? Text("健康评分: " + healthRate,
                       style: TextStyle(fontSize: 20))
                     : Text(''),
                 Row(
