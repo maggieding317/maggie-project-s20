@@ -17,37 +17,42 @@ class RecommendataionSchedule {
     schedule_list.add({
       "time" : "8:00am",
       "type" : "food",
-      "name" : "breakfast"
+      "name" : rec_activity[0]
     });
     schedule_list.add({
       "time" : "9:00am",
       "type" : "activity",
-      "name" : rec_activity[0]
+      "name" : rec_activity[4]
     });
     schedule_list.add({
       "time" : "10:00am",
       "type" : "activity",
-      "name" : rec_activity[1]
+      "name" : rec_activity[5]
     });
     schedule_list.add({
       "time" : "12:00am",
       "type" : "food",
-      "name" : "lunch"
+      "name" : rec_activity[1]
     });
     schedule_list.add({
       "time" : "12:30pm",
       "type" : "activity",
-      "name" : "nap"
+      "name" : rec_activity[3]
     });
     schedule_list.add({
       "time" : "2:00pm",
       "type" : "activity",
-      "name" : rec_activity[1]
+      "name" : rec_activity[6]
+    });
+    schedule_list.add({
+      "time" : "5:00pm",
+      "type" : "food",
+      "name" : rec_activity[2]
     });
     schedule_list.add({
       "time" : "9:00pm",
       "type" : "activity",
-      "name" : "sleep"
+      "name" : rec_activity[3]
     });
     return schedule_list;
   }
